@@ -1,23 +1,25 @@
-# Rivals of SQL
+# The Old World Archives
 
 
 ## Description
-An app for desktop, mobile and web to consult framedata of the greatest fighting game to date. Some of its features are:
-* Framedata table with images / gifs for each character.
-* Map info tab, with blastzone size, platform size, and character affinity with that map.
-* Lessons tab, where users can make and post lessons.
-* Community tab, where users can engage in discussions in a forum-like manner.
+The Old World Archives is a project directed by college students that implements community-based and wiki-like funcionalities for the game Content Warning on a website. Among its functionalities:
+* Login and logout features;
+* Entity wiki;
+* Map wiki (including entities that appear in each environment);
+* Item wiki;
+* About Us page;
+* Community tab, where users can post their spooky submissions directly from the game and earn views and likes!
 
 
-## Installation
-When the project is released, download the executable and run it.
+## Access
+When the project is released, simply access the website.
 
 ## Usage
-Upon opening the app, you will be directed to the character selection screen, where you can choose a character and consult its framedata. On the bottom row, it will have a bar with each category's tab to choose. On the top left, a user registration / login area can be found.
+Upon opening the website, you will be directed to the optional login page. Regardless of whether you choose to log in or not, you'll have access to different tabs containing information about 1) entities in the game 2) maps and entities that show up in them 3) items in the game 4) the website itself (our about us page) and 5) the community tab, in which you may watch players' submissions and, in case you are logged in, post your own submissions and like videos.
 
 ## Roadmap
-* [ ] Add a movement check, where you can check whether the attack you chose will win against an opponent's attack. 
-* [ ] Add embedding images / videos to lessons.
+* [ ] Add basic login functionalities
+* [ ] Add pictures to entities, maps and items and properly source them
 
 ## License
 This project is licensed under the GNU General Public License Version 3.
