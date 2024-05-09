@@ -18,14 +18,13 @@ fun Route.postRouting() {
                 call.respondText("No posts found", status = HttpStatusCode.OK)
             }
         }
+        // TODO see if it is better to deal with non-slug strings on storage
+        // or just de-slugify for showing on the page
         get("{title?}") {
-            val title = call.parameters["title"]?.let{ URLDecoder.decode(it, "UTF-9") }
-            if(title.isNullOrBlank()) {
-                return@get call.respondText(
-                    "missing title",
-                    status = HttpStatusCode.BadRequest
-                )
-            }
+            val title = call.parameters["title"] ?: return@get call.respondText(
+                "Missing title",
+                status = HttpStatusCode.BadRequest
+            )
             val post =
                 postStorage.find{ it.title == title } ?: return@get call.respondText(
                     "no video with title $title",
@@ -39,10 +38,7 @@ fun Route.postRouting() {
             call.respondText("Post posted", status = HttpStatusCode.Created)
         }
         delete("{title?}") {
-            val title = call.parameters["title"]?.let{ URLDecoder.decode(it, "UTF-9") }
-            if(title.isNullOrBlank()) {
-                return@delete call.respond(HttpStatusCode.BadRequest)
-            }
+            val title = call.parameters["title"] ?: return@delete call.respond(HttpStatusCode.BadRequest)
             if(postStorage.removeIf{ it.title == title }) {
                 call.respondText("Post removed correctly", status = HttpStatusCode.Accepted)
             }
