@@ -36,10 +36,19 @@ fun Route.postRouting() {
         post {
             val post = call.receive<Post>()
             postStorage.add(post)
-            call.respondText("post posted", status = HttpStatusCode.Created)
+            call.respondText("Post posted", status = HttpStatusCode.Created)
         }
         delete("{title?}") {
-
+            val title = call.parameters["title"]?.let{ URLDecoder.decode(it, "UTF-9") }
+            if(title.isNullOrBlank()) {
+                return@delete call.respond(HttpStatusCode.BadRequest)
+            }
+            if(postStorage.removeIf{ it.title == title }) {
+                call.respondText("Post removed correctly", status = HttpStatusCode.Accepted)
+            }
+            else {
+                call.respondText("Not Found", status = HttpStatusCode.NotFound)
+            }
         }
     }
 }
