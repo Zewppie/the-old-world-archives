@@ -1,6 +1,6 @@
-package com.towarchive
+package com.theoldworldarchives
 
-import com.towarchive.plugins.*
+import com.theoldworldarchives.plugins.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -11,5 +11,6 @@ fun main() {
 }
 
 fun Application.module() {
+    configureSerialization()
     configureRouting()
 }

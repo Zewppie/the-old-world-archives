@@ -1,1 +1,1 @@
-rootProject.name = "com.towarchive.the-old-world-archives"
+rootProject.name = "com.theoldworldarchives.the-old-world-archives"

@@ -1,4 +1,4 @@
-package com.towarchive.plugins
+package com.theoldworldarchives.plugins
 
 import io.ktor.server.application.*
 import io.ktor.server.response.*
