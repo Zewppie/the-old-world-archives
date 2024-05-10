@@ -2,6 +2,7 @@ package com.theoldworldarchives
 
 import com.theoldworldarchives.models.Post
 import com.theoldworldarchives.plugins.configureRouting
+import com.theoldworldarchives.plugins.configureSerialization
 import io.ktor.client.call.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.serialization.kotlinx.json.*
@@ -17,6 +18,7 @@ class PostRouteTest {
     @Test
     fun testPostPost() =  testApplication {
         application {
+            configureSerialization()
             configureRouting()
         }
         val client = createClient {
@@ -44,6 +46,7 @@ class PostRouteTest {
     @Test
     fun testPostGet() = testApplication {
         application {
+            configureSerialization()
             configureRouting()
         }
         val expectedPost = Post(
@@ -63,9 +66,9 @@ class PostRouteTest {
             setBody(expectedPost)
         }
 
-        val getResponse = client.get("/post/funny-little-title")
+        val getResponse = client.get("/post/200")
         assertEquals(
-            """{"id": 200,"title":"funny-little-title","video_filepath": "path/to/video","description": "funny tiny little description"}""",
+            """{"id":200,"title":"funny-little-title","video_filepath":"path/to/funny/video","description":"funny tiny little description"}""",
             getResponse.bodyAsText())
     }
 }
