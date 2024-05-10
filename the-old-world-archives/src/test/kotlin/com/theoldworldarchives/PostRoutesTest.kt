@@ -25,6 +25,7 @@ class PostRouteTest {
             }
         }
         val post = Post(
+            200,
             "funny-little-title",
             "path/to/funny/video",
             "funny tiny little description"
@@ -46,6 +47,7 @@ class PostRouteTest {
             configureRouting()
         }
         val expectedPost = Post(
+                200,
                 "funny-little-title",
                 "path/to/funny/video",
                 "funny tiny little description"
@@ -63,7 +65,7 @@ class PostRouteTest {
 
         val getResponse = client.get("/post/funny-little-title")
         assertEquals(
-            """{"title":"funny-little-title","video_filepath": "path/to/video","description": "funny tiny little description"}""",
+            """{"id": 200,"title":"funny-little-title","video_filepath": "path/to/video","description": "funny tiny little description"}""",
             getResponse.bodyAsText())
     }
 }
