@@ -71,4 +71,34 @@ class PostRouteTest {
             """{"id":200,"title":"funny-little-title","video_filepath":"path/to/funny/video","description":"funny tiny little description"}""",
             getResponse.bodyAsText())
     }
+
+    @Test
+    fun testPostDelete() = testApplication {
+        application {
+            configureSerialization()
+            configureRouting()
+        }
+        val expectedPost = Post(
+            200,
+            "funny-little-title",
+            "path/to/funny/video",
+            "funny tiny little description"
+        )
+        val client = createClient {
+            install(ContentNegotiation) {
+                json()
+            }
+        }
+        // making a post first for then requesting a GET
+        val postResponse = client.post("/post") {
+            contentType(ContentType.Application.Json)
+            setBody(expectedPost)
+        }
+
+        val deleteResponse = client.delete("post/200")
+        assertEquals(
+            "Post removed correctly",
+            deleteResponse.bodyAsText()
+        )
+    }
 }
