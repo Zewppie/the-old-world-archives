@@ -1,6 +1,7 @@
 package com.theoldworldarchives
 
 import com.theoldworldarchives.plugins.*
+import com.theoldworldarchives.dao.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -11,6 +12,7 @@ fun main() {
 }
 
 fun Application.module() {
+    DatabaseSingleton.init()
     configureSerialization()
     configureRouting()
 }
