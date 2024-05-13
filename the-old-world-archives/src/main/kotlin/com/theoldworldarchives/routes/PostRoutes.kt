@@ -30,7 +30,8 @@ fun Route.postRouting() {
             call.respond(post)
         }
         post {
-            val post = call.receive<Post>()
+            val postRequest = call.receive<Post>()
+            val post = Post.new(postRequest.title, postRequest.videoFilepath, postRequest.description)
             postStorage.add(post)
             call.respondText("Post posted", status = HttpStatusCode.Created)
         }
