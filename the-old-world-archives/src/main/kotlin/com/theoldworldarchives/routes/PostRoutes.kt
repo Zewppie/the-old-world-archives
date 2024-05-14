@@ -11,7 +11,7 @@ import io.ktor.server.routing.*
 import io.ktor.server.util.*
 
 fun Route.postRouting() {
-    route("/post") {
+    route("/posts") {
         get {
             call.respond(FreeMarkerContent("index.ftl", mapOf("posts" to dao.allPosts())))
         }

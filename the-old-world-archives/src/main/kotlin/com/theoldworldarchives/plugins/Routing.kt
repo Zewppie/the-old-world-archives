@@ -16,7 +16,7 @@ fun Application.configureRouting() {
         postRouting()
         staticResources("/static", "files")
         get("/") {
-            call.respondRedirect("/static/mainpage.html")
+            call.respondRedirect("/posts")
         }
     }
 }

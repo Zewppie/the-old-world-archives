@@ -50,7 +50,7 @@ class DAOFacadeImpl : DAOFacade {
 val dao: DAOFacade = DAOFacadeImpl().apply {
     runBlocking {
         if(allPosts().isEmpty()) {
-            addNewPost("The drive to develop!", "/static/content_warning_4d93e4cc.webm", "Fala galerinah de mac350 :]")
+            addNewPost("Saquem só esse vídeo engraçado!!", "/static/content_warning_4d93e4cc.webm", "Fala galerinah de mac350 :]")
         }
     }
 }
