@@ -13,6 +13,7 @@ object DatabaseSingleton {
         val database = Database.connect(jdbcURL, driverClassName)
         transaction(database) {
             SchemaUtils.create(Posts)
+            SchemaUtils.create(Users)
         }
     }
 
