@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação de Post</title>
+  </head>
+
+  <body>
+
+    <button onclick="fetchData()">Criar Post</button>
+    <div id="result"></div>
+
+    <script>
+      const request = (url, params = {}, method = 'GET', headers = {}) => {
+          let options = { "method": method , "headers" : headers , credentials: 'include'};
+          if ('GET' === method) {
+              url += '?' + (new URLSearchParams(params)).toString();
+          } else {
+              options.body = JSON.stringify(params);
+          }
+          return fetch(url, options);
+      };
+      const get = (url, params, headers) => request(url, params, 'GET', headers);
+      const post = (url, params, headers) => request(url, params, 'POST', headers);
+
+      function fetchData() {
+        // Troque a porta pela sua porta correspondente e a sua rota
+        get('http://localhost:8080/posts/new').then(response => response.text()).then(data => {
+          // Exibe o resultado no elemento com id=result
+            document.getElementById('result').innerHTML = data; //JSON.stringify(data);
+        }).catch(error => {
+          console.error('Error:', error);
+        });
+      }
+    </script>
+
+  </body>
+
+</html>
