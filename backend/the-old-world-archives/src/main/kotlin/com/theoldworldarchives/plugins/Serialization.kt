@@ -23,7 +23,8 @@ fun Application.configureSerialization() {
             1,
             "Check out this funny video!!",
             "/static/content_warning_4d93e4cc.webm",
-            "That's all folks, like and subscribe for more!"
+            "That's all folks, like and subscribe for more!",
+            "template_user"
         )
         get("/posts/samplepost") {
                 call.respond(FreeMarkerContent("show.ftl", mapOf("post" to newPost)))
