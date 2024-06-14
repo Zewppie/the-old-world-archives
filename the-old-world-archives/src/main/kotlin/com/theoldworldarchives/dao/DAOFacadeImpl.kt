@@ -12,7 +12,8 @@ class DAOFacadeImpl : DAOFacade {
         id = row[Posts.id],
         title = row[Posts.title],
         videoFilepath = row[Posts.videoFilepath],
-        description = row[Posts.description]
+        description = row[Posts.description],
+        userName = row[Posts.userName],
     )
 
     override suspend fun allPosts(): List<Post> = dbQuery {
@@ -26,20 +27,22 @@ class DAOFacadeImpl : DAOFacade {
             .singleOrNull()
     }
 
-    override suspend fun addNewPost(title: String, videoFilepath: String, description: String): Post? = dbQuery {
+    override suspend fun addNewPost(title: String, videoFilepath: String, description: String, userName: String): Post? = dbQuery {
         val insertStatement = Posts.insert {
             it[Posts.title] = title
             it[Posts.videoFilepath] = videoFilepath
             it[Posts.description] = description
+            it[Posts.userName] = userName
         }
         insertStatement.resultedValues?.singleOrNull()?.let(::resultRowToPost)
     }
 
-    override suspend fun editPost(id: Int, title: String, videoFilepath: String, description: String): Boolean = dbQuery {
+    override suspend fun editPost(id: Int, title: String, videoFilepath: String, description: String, userName: String): Boolean = dbQuery {
         Posts.update({ Posts.id eq id }) {
             it[Posts.title] = title
             it[Posts.videoFilepath] = videoFilepath
             it[Posts.description] = description
+            it[Posts.userName] = userName
         } > 0
     }
 
@@ -87,7 +90,11 @@ class DAOFacadeImpl : DAOFacade {
 val dao: DAOFacade = DAOFacadeImpl().apply {
     runBlocking {
         if(allPosts().isEmpty()) {
-            addNewPost("Saquem só esse vídeo engraçado!!", "/static/content_warning_4d93e4cc.webm", "Fala galerinah de mac350 :]")
+            addNewPost("Saquem só esse vídeo engraçado!!",
+                "/static/content_warning_4d93e4cc.webm",
+                "Fala galerinha de mac350 :]",
+                "user1234"
+            )
         }
     }
 }
