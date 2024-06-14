@@ -24,7 +24,8 @@ fun Route.postRouting() {
             val title = formParameters.getOrFail("title")
             val videoFilepath = formParameters.getOrFail("videoFilepath")
             val description = formParameters.getOrFail("description")
-            val post = dao.addNewPost(title, videoFilepath, description)
+            val userName = formParameters.getOrFail("userName")
+            val post = dao.addNewPost(title, videoFilepath, description, userName)
             call.respondRedirect("/posts/${post?.id}")
         }
         post("{id}") {
@@ -35,7 +36,8 @@ fun Route.postRouting() {
                     val title = formParameters.getOrFail("title")
                     val videoFilepath = formParameters.getOrFail("videoFilepath")
                     val description = formParameters.getOrFail("description")
-                    dao.editPost(id, title, videoFilepath, description)
+                    val userName = formParameters.getOrFail("userName")
+                    dao.editPost(id, title, videoFilepath, description, userName)
                     call.respondRedirect("/posts/$id")
                 }
                 "delete" -> {
