@@ -14,6 +14,7 @@ object DatabaseSingleton {
         transaction(database) {
             SchemaUtils.create(Posts)
             SchemaUtils.create(Users)
+            // add more tables as needed
         }
     }
 
