@@ -77,10 +77,9 @@ class DAOFacadeImpl : DAOFacade {
         insertStatement.resultedValues?.singleOrNull()?.let(::resultRowToUser)
     }
 
-    override suspend fun editUser(name: String, password: String): Boolean = dbQuery {
+    override suspend fun editUserPassword(name: String, newPassword: String): Boolean = dbQuery {
         Users.update({ Users.name eq name }) {
-            it[Users.name] = name
-            it[Users.password] = password
+            it[Users.password] = newPassword
         } > 0
     }
 
