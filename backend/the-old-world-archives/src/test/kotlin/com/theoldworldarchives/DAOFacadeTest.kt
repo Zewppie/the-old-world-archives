@@ -44,6 +44,7 @@ class DAOFacadeTest {
         }
     }
 
+    // Post database tests
     @Test
     fun testAllPosts() = runBlocking {
         val posts = dao.allPosts()
@@ -82,5 +83,46 @@ class DAOFacadeTest {
 
         val post = dao.post(1)
         assertNull(post)
+    }
+
+    // User database tests
+    @Test
+    fun testAllUsers() = runBlocking {
+        val users = dao.allUsers()
+        assertEquals(2, users.size)
+        assertEquals("xivo_colzione", users[0].name)
+    }
+
+    @Test
+    fun testGetUserByName() = runBlocking {
+        val user = dao.user("zewppie")
+        assertNotNull(user)
+        assertEquals("limbus_company", user?.password)
+    }
+
+    @Test
+    fun testAddNewUser() = runBlocking {
+        val newUser = dao.addNewUser("new user", "12345")
+        assertNotNull(newUser)
+        assertEquals("new user", newUser?.name)
+    }
+
+    @Test
+    fun testEditUser() = runBlocking {
+        val editedUser = dao.editUser("xivo_colzione", "totsugeki")
+        assertTrue(editedUser)
+
+        val user = dao.user("xivo_colzione")
+        assertNotNull(user)
+        assertEquals("totsugeki", user?.password)
+    }
+
+    @Test
+    fun deleteUser() = runBlocking {
+        val deleted = dao.deleteUser("xivo_colzione")
+        assertTrue(deleted)
+
+        val user = dao.user("xivo_colzione")
+        assertNull(user)
     }
 }

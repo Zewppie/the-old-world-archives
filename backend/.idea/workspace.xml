@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/DAOFacadeTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/DatabaseTestUtils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DAOFacadeImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DAOFacadeImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/PostRoutesTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/PostRoutesTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/DAOFacadeTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/DAOFacadeTest.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +76,7 @@
     "Kotlin.ApplicationKt.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "post-database-tests",
+    "git-widget-placeholder": "user-database-tests",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend",

@@ -85,7 +85,7 @@ class DAOFacadeImpl : DAOFacade {
     }
 
     override suspend fun deleteUser(name: String): Boolean = dbQuery {
-        Posts.deleteWhere { Users.name eq name } > 0
+        Users.deleteWhere { Users.name eq name } > 0
     }
 }
 
