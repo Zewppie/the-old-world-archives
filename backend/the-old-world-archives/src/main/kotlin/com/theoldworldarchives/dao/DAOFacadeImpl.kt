@@ -5,8 +5,10 @@ import com.theoldworldarchives.models.*
 import kotlinx.coroutines.runBlocking
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.transactions.transaction
 
 class DAOFacadeImpl : DAOFacade {
+
     // Post class
     private fun resultRowToPost(row: ResultRow) = Post(
         id = row[Posts.id],
@@ -83,7 +85,7 @@ class DAOFacadeImpl : DAOFacade {
     }
 
     override suspend fun deleteUser(name: String): Boolean = dbQuery {
-        Posts.deleteWhere { Users.name eq name } > 0
+        Users.deleteWhere { Users.name eq name } > 0
     }
 }
 

@@ -14,6 +14,7 @@ import io.ktor.http.*
 import io.ktor.server.application.*
 import kotlin.test.assertEquals
 
+// DEPRECATED
 class PostRouteTest {
     @Test
     fun testPostPost() =  testApplication {
@@ -30,7 +31,8 @@ class PostRouteTest {
             200,
             "funny-little-title",
             "path/to/funny/video",
-            "funny tiny little description"
+            "funny tiny little description",
+            "user"
         )
         // see what the client gets as answer when trying to make a post
         val response = client.post("/post") {
@@ -53,7 +55,8 @@ class PostRouteTest {
                 200,
                 "funny-little-title",
                 "path/to/funny/video",
-                "funny tiny little description"
+                "funny tiny little description",
+            "user"
         )
         val client = createClient {
             install(ContentNegotiation) {
@@ -82,7 +85,8 @@ class PostRouteTest {
             200,
             "funny-little-title",
             "path/to/funny/video",
-            "funny tiny little description"
+            "funny tiny little description",
+            "user"
         )
         val client = createClient {
             install(ContentNegotiation) {
