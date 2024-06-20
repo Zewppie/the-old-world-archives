@@ -1,8 +1,6 @@
 package com.theoldworldarchives.routes
 
-import com.theoldworldarchives.models.*
 import com.theoldworldarchives.dao.*
-import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.freemarker.*
 import io.ktor.server.request.*
