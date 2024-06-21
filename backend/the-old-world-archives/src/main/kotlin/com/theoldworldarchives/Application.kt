@@ -8,19 +8,23 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.server.plugins.cors.*
 
+fun Application.configureCors() {
+    install(CORS) {
+        allowHost("0.0.0.0:8081")
+        allowCredentials = true
+        allowHeader(HttpHeaders.ContentType)
+        allowHeader(HttpHeaders.Authorization)
+    }
+}
+
 fun main() {
-    embeddedServer(Netty, 8080) {
-        install(CORS) {
-            allowHost("0.0.0.0:8081")
-            allowCredentials = true
-            allowHeader(HttpHeaders.ContentType)
-            allowHeader(HttpHeaders.Authorization)
-        }
-    }.start(wait = true)
+    embeddedServer(Netty, port = 8080, module = Application::module)
+        .start(wait = true)
 }
 
 fun Application.module() {
     DatabaseSingleton.init()
     configureSerialization()
     configureRouting()
+    configureCors()
 }

@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="">
+    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Configure CORS&#10;&#10;CORS configuration added to accept requests from localhost:8081 for testing purposes.">
       <change afterPath="$PROJECT_DIR$/../frontend/src/pages/register.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the-old-world-archives/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/Application.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/UserRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/UserRoutes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/tsconfig.json" afterDir="false" />
     </list>
@@ -130,6 +127,8 @@
       <workItem from="1718975902006" duration="17000" />
       <workItem from="1718975922541" duration="1000" />
       <workItem from="1718976276086" duration="1488000" />
+      <workItem from="1718978593203" duration="41000" />
+      <workItem from="1718978695072" duration="673000" />
     </task>
     <servers />
   </component>
