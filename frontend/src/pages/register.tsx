@@ -4,6 +4,7 @@ import { TextInput, PasswordInput, Button, Box } from '@mantine/core';
 import axios from 'axios';
 
 const Register = () => {
+    // make form for user to provide input
     const form = useForm({
         initialValues: {
             username: '',
@@ -18,10 +19,14 @@ const Register = () => {
 
     const handleSubmit = async (values: typeof form.values) => {
         try {
+            // make POST request to the given backend endpoint with the given
+            // JSON structure and stores the response
             const response = await axios.post('/user/register', {
                 name: values.username, // backend expects field "name" instead of "username"
                 password: values.password
             }, {
+                // header must be set because backend only allows for
+                // 'content-type' and 'authorization' headers
                 headers: {
                     'Content-Type': 'application/json'
                 }
