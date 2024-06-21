@@ -8,7 +8,9 @@ function Home() {
             <Link to="/posts">
                 <Button variant="filled" color="indigo">Go to Posts Page</Button>
             </Link>
-            
+            <Link to="/user/register">
+                <Button variant="filled" color="indigo">Register</Button>
+            </Link>
         </div>
     );
 };
