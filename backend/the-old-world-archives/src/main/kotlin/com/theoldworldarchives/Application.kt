@@ -10,8 +10,14 @@ import io.ktor.server.plugins.cors.*
 
 fun Application.configureCors() {
     install(CORS) {
+        allowSameOrigin = true // allows for HTTP requests from the same origin
         allowHost("0.0.0.0:8081")
+        allowHost("localhost:8081")
+        allowHost("127.0.0.1:8081")
+        // uncomment below for production (only hosts above for testing)
+        //anyHost()
         allowCredentials = true
+        // this allows for receiving headers of the following type
         allowHeader(HttpHeaders.ContentType)
         allowHeader(HttpHeaders.Authorization)
     }
