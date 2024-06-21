@@ -1,11 +1,17 @@
 package com.theoldworldarchives.routes
 
 import com.theoldworldarchives.dao.dao
+import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.util.*
+import kotlinx.serialization.Serializable
+
+// data class to represent an incoming JSON structure within a request
+@Serializable
+data class RegistrationRequest(val name: String, val password: String)
 
 fun Route.userRouting() {
     route("/user") {
@@ -13,13 +19,22 @@ fun Route.userRouting() {
             val name = call.parameters.getOrFail<Int>("name").toString()
             // pass information to react to put on the page
         }
-        post {
-            val formParameters = call.receiveParameters()
-            val name = formParameters.getOrFail("name")
-            val password = formParameters.getOrFail("password")
-            val user = dao.addNewUser(name, password)
-            // redirects to user page
-            call.respondRedirect("/user/${user?.name}")
+        post("/register") {
+            // TODO: error handling when trying to register a user already in database
+            try {
+                // receives a JSON payload and deserializes it
+                val request = call.receive<RegistrationRequest>()
+                // TODO: save password hash instead of pure string
+                val user = dao.addNewUser(request.name, request.password)
+                // returns user to frontend if not null
+                if(user != null) {
+                    call.respond(HttpStatusCode.OK, user)
+                } else {
+                    call.respond(HttpStatusCode.BadRequest, "Failed to register user")
+                }
+            } catch (e: Exception) {
+                call.respond(HttpStatusCode.BadRequest, e.message ?: "Invalid user registration request")
+            }
         }
         post("{name}") {
             val name = call.parameters.getOrFail<Int>("name").toString()
