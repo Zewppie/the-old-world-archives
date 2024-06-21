@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="backend.com.theoldworldarchives.the-old-world-archives.main~1" target="17" />
-      <module name="backend.com.theoldworldarchives.the-old-world-archives.test~1" target="17" />
+      <module name="backend.com.theoldworldarchives.the-old-world-archives.main" target="17" />
+      <module name="backend.com.theoldworldarchives.the-old-world-archives.test" target="17" />
       <module name="com.theoldworldarchives.the-old-world-archives" target="17" />
       <module name="com.theoldworldarchives.the-old-world-archives.main" target="17" />
       <module name="com.theoldworldarchives.the-old-world-archives.test" target="17" />
