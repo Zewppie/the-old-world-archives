@@ -12,7 +12,7 @@ axios.defaults.baseURL = 'http://localhost:8080' // de onde a requisição vai s
 function App() {
     // o routes vai servir de hub pra mudar de páginas, a única coisa que eu preciso fazer no App.tsx é colocar as páginas
     return (
-        <MantineProvider>
+        <MantineProvider defaultColorScheme="dark">
             <BrowserRouter> 
                 <Routes> 
                     <Route index element={<Home />} />
