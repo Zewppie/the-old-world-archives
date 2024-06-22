@@ -4,6 +4,7 @@ import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 import Home from './pages/home'
 import Posts from './pages/posts'
+import Register from './pages/register'
 import Entities from './pages/entities';
 
 
@@ -11,11 +12,12 @@ axios.defaults.baseURL = 'http://localhost:8080' // de onde a requisição vai s
 function App() {
     // o routes vai servir de hub pra mudar de páginas, a única coisa que eu preciso fazer no App.tsx é colocar as páginas
     return (
-        <MantineProvider>
+        <MantineProvider defaultColorScheme="dark">
             <BrowserRouter> 
                 <Routes> 
                     <Route index element={<Home />} />
                     <Route path="posts" element={<Posts />} />
+                    <Route path="user/register" element={<Register />} />
                     <Route path="entities" element={<Entities />} />
                 </Routes>
             </BrowserRouter>

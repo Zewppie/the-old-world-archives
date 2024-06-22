@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="">
+    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/Application.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DAOFacadeImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DAOFacadeImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/DAOFacadeTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/DAOFacadeTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/UserRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/UserRoutes.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/register.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +48,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="user-registration" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -64,35 +67,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Gradle.Build the-old-world-archives.executor": "Run",
-    "Gradle.DAOFacadeTest.executor": "Run",
-    "Gradle.DatabaseTest.executor": "Run",
-    "Gradle.PostRouteTest.executor": "Run",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "Kotlin.ApplicationKt.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "user-database-tests",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.Build the-old-world-archives.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DAOFacadeTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DatabaseTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PostRouteTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.ApplicationKt.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;user-registration&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/xivo/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "kotlin-gradle-user-dirs": [
-      "/home/xivo/.gradle"
+  &quot;keyToStringList&quot;: {
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;/home/xivo/.gradle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="com.theoldworldarchives.dao" />
@@ -118,14 +122,47 @@
       <option name="presentableId" value="Default" />
       <updated>1715568443773</updated>
       <workItem from="1718381506225" duration="1014000" />
+      <workItem from="1718975261407" duration="614000" />
+      <workItem from="1718975902006" duration="17000" />
+      <workItem from="1718975922541" duration="1000" />
+      <workItem from="1718976276086" duration="1488000" />
+      <workItem from="1718978593203" duration="41000" />
+      <workItem from="1718978695072" duration="673000" />
+      <workItem from="1718979846563" duration="1518000" />
+      <workItem from="1718982110230" duration="132000" />
+      <workItem from="1718982340244" duration="1584000" />
+      <workItem from="1718986954414" duration="2118000" />
+      <workItem from="1718989164224" duration="3000" />
     </task>
+    <task id="LOCAL-00001" summary="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
+      <option name="closed" value="true" />
+      <created>1718988314198</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718988314198</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

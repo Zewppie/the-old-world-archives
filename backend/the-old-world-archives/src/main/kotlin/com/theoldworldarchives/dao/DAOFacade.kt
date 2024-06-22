@@ -12,6 +12,6 @@ interface DAOFacade {
     suspend fun allUsers(): List<User>
     suspend fun user(name: String): User?
     suspend fun addNewUser(name: String, password: String): User?
-    suspend fun editUser(name: String, password: String): Boolean
+    suspend fun editUserPassword(name: String, newPassword: String): Boolean
     suspend fun deleteUser(name: String): Boolean
 }

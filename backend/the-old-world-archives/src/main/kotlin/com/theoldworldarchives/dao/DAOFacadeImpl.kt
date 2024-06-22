@@ -77,10 +77,9 @@ class DAOFacadeImpl : DAOFacade {
         insertStatement.resultedValues?.singleOrNull()?.let(::resultRowToUser)
     }
 
-    override suspend fun editUser(name: String, password: String): Boolean = dbQuery {
+    override suspend fun editUserPassword(name: String, newPassword: String): Boolean = dbQuery {
         Users.update({ Users.name eq name }) {
-            it[Users.name] = name
-            it[Users.password] = password
+            it[Users.password] = newPassword
         } > 0
     }
 
@@ -89,13 +88,15 @@ class DAOFacadeImpl : DAOFacade {
     }
 }
 
-val dao: DAOFacade = DAOFacadeImpl().apply {
-    runBlocking {
-        if(allPosts().isEmpty()) {
-            addNewPost("Saquem só esse vídeo engraçado!!",
-                "/static/content_warning_4d93e4cc.webm",
-                "Fala galerinah de mac350 :]",
-                "template_user")
-        }
-    }
-}
+//val dao: DAOFacade = DAOFacadeImpl().apply {
+//    runBlocking {
+//        if(allPosts().isEmpty()) {
+//            addNewPost("Saquem só esse vídeo engraçado!!",
+//                "/static/content_warning_4d93e4cc.webm",
+//                "Fala galerinah de mac350 :]",
+//                "template_user")
+//        }
+//    }
+//}
+
+val dao: DAOFacade = DAOFacadeImpl()

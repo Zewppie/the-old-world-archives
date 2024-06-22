@@ -108,8 +108,8 @@ class DAOFacadeTest {
     }
 
     @Test
-    fun testEditUser() = runBlocking {
-        val editedUser = dao.editUser("xivo_colzione", "totsugeki")
+    fun testEditUserPassword() = runBlocking {
+        val editedUser = dao.editUserPassword("xivo_colzione", "totsugeki")
         assertTrue(editedUser)
 
         val user = dao.user("xivo_colzione")
