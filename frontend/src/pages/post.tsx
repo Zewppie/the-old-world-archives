@@ -53,6 +53,7 @@ const Post: React.FC<PostProps> = ({ postId }) => {
                     Your browser does not support the video tag.
                 </video>
             )}
+            <p>by {post.userName}</p>
         </div>
     );
 };
