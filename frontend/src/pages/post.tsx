@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {Link} from "react-router-dom";
+import {Button} from "@mantine/core";
 
 interface PostProps {
     postId: number;
@@ -54,6 +56,9 @@ const Post: React.FC<PostProps> = ({ postId }) => {
                 </video>
             )}
             <p>by {post.userName}</p>
+            <Link to="/">
+                <Button variant="filled" color="indigo">Return to Home Page</Button>
+            </Link>
         </div>
     );
 };

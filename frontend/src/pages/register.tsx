@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import { useForm } from '@mantine/form';
 import { TextInput, PasswordInput, Button, Box } from '@mantine/core';
 import axios from 'axios';
+import { UserContext } from '../components/UserContext';
+import {useNavigate} from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     // make form for user to provide input
@@ -16,6 +19,9 @@ const Register = () => {
             password: (value) => (value.length >= 6 ? null : 'Password must be at least 6 characters'),
         },
     });
+    const navigate = useNavigate();
+
+    const { setUser } = useContext(UserContext)
 
     const handleSubmit = async (values: typeof form.values) => {
         try {
@@ -32,11 +38,17 @@ const Register = () => {
                 }
             });
             console.log('User registered successfully:', response.data);
-            // handle redirection to user page here (or to home page idk)
+
+            setUser(response.data)
+            navigate('/posts')
         } catch (error) {
             console.error('Error registering user:', error);
         }
     };
+
+    const redirectToHome = () => {
+        navigate('/');
+    }
 
     return (
         <Box sx={{ maxWidth: 300 }} mx="auto">
@@ -55,6 +67,9 @@ const Register = () => {
                 <Button type="submit" mt="sm" fullWidth>
                     Register
                 </Button>
+                <Link to="/">
+                    <Button variant="filled" color="indigo">Return to Home Page</Button>
+                </Link>
             </form>
         </Box>
     );

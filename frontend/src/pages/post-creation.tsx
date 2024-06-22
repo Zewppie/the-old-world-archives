@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+import axios from '../axiosConfig';
+import { UserContext } from '../components/UserContext';
+import {Button} from "@mantine/core";
 
-// TODO: take user logged in and fill this field
-interface PostCreationProps {
-    userName: string;
-}
-
-const PostCreation: React.FC<PostCreationProps> = ({ userName }) => {
+const PostCreation: React.FC = () => {
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [videoFile, setVideoFile] = useState<File | null>(null);
-    const navigate = useNavigate()
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    // a user that is not logged-in needs to be redirected to login page
+    useEffect(() => {
+        if(!user) {
+            navigate('/user/login');
+        }
+    }, [user, navigate]);
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
@@ -31,7 +36,9 @@ const PostCreation: React.FC<PostCreationProps> = ({ userName }) => {
         uploadData.append('title', title);
         uploadData.append('description', description);
         uploadData.append('videoFile', videoFile);
-        uploadData.append('userName', userName);
+        if (user && user.name) {
+            uploadData.append('userName', user.name);
+        }
 
         try {
             const response = await axios.post('/posts/upload', uploadData, {
@@ -40,8 +47,7 @@ const PostCreation: React.FC<PostCreationProps> = ({ userName }) => {
                 },
             });
             console.log('Post created successfully', response.data);
-            // Redirect to page with the created post
-            navigate(`/posts/${response.data.id}`)
+            navigate(`/posts/${response.data.id}`);
         } catch (error) {
             console.error('Error creating post', error);
         }
@@ -50,38 +56,35 @@ const PostCreation: React.FC<PostCreationProps> = ({ userName }) => {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label>
-                    Title:
-                    <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                    />
-                </label>
+                <label>Title:</label>
+                <input
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                />
             </div>
             <div>
-                <label>
-                    Description:
-                    <textarea
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        required
-                    />
-                </label>
+                <label>Description:</label>
+                <textarea
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                />
             </div>
             <div>
-                <label>
-                    Video:
-                    <input
-                        type="file"
-                        accept="video/*"
-                        onChange={handleFileChange}
-                        required
-                    />
-                </label>
+                <label>Video:</label>
+                <input
+                    type="file"
+                    accept="video/webm"
+                    onChange={handleFileChange}
+                    required
+                />
             </div>
             <button type="submit">Submit</button>
+            <Link to="/">
+                <Button variant="filled" color="indigo">Return to Home Page</Button>
+            </Link>
         </form>
     );
 };
