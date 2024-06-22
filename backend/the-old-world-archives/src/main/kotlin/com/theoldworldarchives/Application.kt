@@ -30,6 +30,7 @@ fun main() {
 
 fun Application.module() {
     DatabaseSingleton.init()
+    //DatabaseSingleton.reset()
     configureSerialization()
     configureRouting()
     configureCors()
