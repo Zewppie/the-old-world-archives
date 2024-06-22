@@ -8,11 +8,11 @@ function Home() {
             <Link to="/posts">
                 <Button variant="filled" color="indigo">Go to Posts Page</Button>
             </Link>
-            <Link to="/user/register">
-                <Button variant="filled" color="indigo">Register</Button>
-            </Link>
             <Link to="/posts/upload">
                 <Button variant="filled" color="indigo">Upload a Post</Button>
+            </Link>
+            <Link to="/user/login">
+                <Button variant="filled" color="indigo">Login</Button>
             </Link>
         </div>
     );

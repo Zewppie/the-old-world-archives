@@ -2,11 +2,16 @@ package com.theoldworldarchives
 
 import com.theoldworldarchives.plugins.*
 import com.theoldworldarchives.dao.*
+import io.ktor.server.engine.embeddedServer
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import io.ktor.server.plugins.cors.*
+import io.ktor.server.auth.*
+import com.auth0.jwt.JWT
+import com.auth0.jwt.algorithms.Algorithm
+import io.ktor.server.auth.jwt.*
 
 fun Application.configureCors() {
     install(CORS) {
@@ -23,6 +28,28 @@ fun Application.configureCors() {
     }
 }
 
+fun Application.configureAuthentication() {
+    install(Authentication) {
+        jwt("auth-jwt") {
+            realm = "The Old World Archives"
+            verifier(
+                JWT
+                    .require(Algorithm.HMAC256("the-fusca-4-porta-is-a-lie"))
+                    .withAudience("the-old-world-archives")
+                    .withIssuer("https://localhost:8080")
+                    .build()
+            )
+            validate { credential ->
+                if (credential.payload.getClaim("name").asString().isNotEmpty()) {
+                    JWTPrincipal(credential.payload)
+                } else {
+                    null
+                }
+            }
+        }
+    }
+}
+
 fun main() {
     embeddedServer(Netty, port = 8080, module = Application::module)
         .start(wait = true)
@@ -32,6 +59,7 @@ fun Application.module() {
     DatabaseSingleton.init()
     //DatabaseSingleton.reset()
     configureSerialization()
+    configureAuthentication()
     configureRouting()
     configureCors()
 }

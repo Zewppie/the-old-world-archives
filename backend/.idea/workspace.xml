@@ -5,9 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/uploads/content_warning_4d93e4cc.webm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/axiosConfig.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/contexts/UserContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/Application.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DatabaseSingleton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DatabaseSingleton.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/UserRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/UserRoutes.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/post-creation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/post-creation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/post.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/posts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/posts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/register.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +91,7 @@
     &quot;Kotlin.ApplicationKt.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;post-creation&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;user-login-and-session&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend&quot;,
@@ -152,6 +167,27 @@
       <workItem from="1719021887442" duration="328000" />
       <workItem from="1719022374458" duration="441000" />
       <workItem from="1719063982834" duration="662000" />
+      <workItem from="1719070906216" duration="3337000" />
+      <workItem from="1719080560984" duration="2000" />
+      <workItem from="1719086541461" duration="8000" />
+      <workItem from="1719086620170" duration="787000" />
+      <workItem from="1719087861894" duration="92000" />
+      <workItem from="1719087985014" duration="331000" />
+      <workItem from="1719088474979" duration="128000" />
+      <workItem from="1719088621190" duration="29000" />
+      <workItem from="1719088676743" duration="21000" />
+      <workItem from="1719088713132" duration="220000" />
+      <workItem from="1719088972904" duration="193000" />
+      <workItem from="1719089230968" duration="204000" />
+      <workItem from="1719089540933" duration="708000" />
+      <workItem from="1719090650683" duration="467000" />
+      <workItem from="1719091684110" duration="460000" />
+      <workItem from="1719092262017" duration="66000" />
+      <workItem from="1719093022444" duration="156000" />
+      <workItem from="1719093991965" duration="1000" />
+      <workItem from="1719093996389" duration="99000" />
+      <workItem from="1719094838991" duration="422000" />
+      <workItem from="1719095344968" duration="329000" />
     </task>
     <task id="LOCAL-00001" summary="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
       <option name="closed" value="true" />
