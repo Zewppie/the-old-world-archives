@@ -11,6 +11,9 @@ function Home() {
             <Link to="/user/register">
                 <Button variant="filled" color="indigo">Register</Button>
             </Link>
+            <Link to="/posts/upload">
+                <Button variant="filled" color="indigo">Upload a Post</Button>
+            </Link>
         </div>
     );
 };

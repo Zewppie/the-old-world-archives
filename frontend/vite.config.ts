@@ -10,5 +10,5 @@ export default defineConfig({
     watch : {
       usePolling : true // para que funcione em windows
     }
-  }
-})
+  },
+});

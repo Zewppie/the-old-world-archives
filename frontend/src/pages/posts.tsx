@@ -7,6 +7,6 @@ function Posts() {
             {/* Add your content here */}
         </div>
     );
-};
+}
 
 export default Posts;

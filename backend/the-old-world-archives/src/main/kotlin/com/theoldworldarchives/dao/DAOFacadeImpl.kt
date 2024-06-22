@@ -8,12 +8,11 @@ import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class DAOFacadeImpl : DAOFacade {
-
     // Post class
     private fun resultRowToPost(row: ResultRow) = Post(
         id = row[Posts.id],
         title = row[Posts.title],
-        videoFilepath = row[Posts.videoFilepath],
+        videoFileName = row[Posts.videoFileName],
         description = row[Posts.description],
         userName = row[Posts.userName]
     )
@@ -29,20 +28,21 @@ class DAOFacadeImpl : DAOFacade {
             .singleOrNull()
     }
 
-    override suspend fun addNewPost(title: String, videoFilepath: String, description: String, userName: String): Post? = dbQuery {
+    override suspend fun addNewPost(title: String, videoFileName: String, description: String, userName: String): Post? = dbQuery {
         val insertStatement = Posts.insert {
             it[Posts.title] = title
-            it[Posts.videoFilepath] = videoFilepath
+            it[Posts.videoFileName] = videoFileName
             it[Posts.description] = description
             it[Posts.userName] = userName
         }
         insertStatement.resultedValues?.singleOrNull()?.let(::resultRowToPost)
+            ?: throw IllegalArgumentException("Failed to insert a new post")
     }
 
-    override suspend fun editPost(id: Int, title: String, videoFilepath: String, description: String, userName: String): Boolean = dbQuery {
+    override suspend fun editPost(id: Int, title: String, videoFileName: String, description: String, userName: String): Boolean = dbQuery {
         Posts.update({ Posts.id eq id }) {
             it[Posts.title] = title
-            it[Posts.videoFilepath] = videoFilepath
+            it[Posts.videoFileName] = videoFileName
             it[Posts.description] = description
             it[Posts.userName] = userName
         } > 0
@@ -87,16 +87,5 @@ class DAOFacadeImpl : DAOFacade {
         Users.deleteWhere { Users.name eq name } > 0
     }
 }
-
-//val dao: DAOFacade = DAOFacadeImpl().apply {
-//    runBlocking {
-//        if(allPosts().isEmpty()) {
-//            addNewPost("Saquem só esse vídeo engraçado!!",
-//                "/static/content_warning_4d93e4cc.webm",
-//                "Fala galerinah de mac350 :]",
-//                "template_user")
-//        }
-//    }
-//}
 
 val dao: DAOFacade = DAOFacadeImpl()

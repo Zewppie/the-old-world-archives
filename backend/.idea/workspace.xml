@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
+    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/uploads/content_warning_4d93e4cc.webm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/Application.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/Application.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DAOFacadeImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DAOFacadeImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/UserRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/UserRoutes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/register.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +76,7 @@
     &quot;Kotlin.ApplicationKt.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;user-registration&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;post-creation&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend&quot;,
@@ -133,6 +130,28 @@
       <workItem from="1718982340244" duration="1584000" />
       <workItem from="1718986954414" duration="2118000" />
       <workItem from="1718989164224" duration="3000" />
+      <workItem from="1718994516255" duration="3390000" />
+      <workItem from="1718998334505" duration="27000" />
+      <workItem from="1719006006483" duration="2243000" />
+      <workItem from="1719009178647" duration="99000" />
+      <workItem from="1719010697267" duration="561000" />
+      <workItem from="1719011277007" duration="2725000" />
+      <workItem from="1719015549021" duration="342000" />
+      <workItem from="1719015993483" duration="225000" />
+      <workItem from="1719016586226" duration="67000" />
+      <workItem from="1719016922891" duration="185000" />
+      <workItem from="1719017452054" duration="1121000" />
+      <workItem from="1719018670603" duration="46000" />
+      <workItem from="1719018863924" duration="569000" />
+      <workItem from="1719019436535" duration="40000" />
+      <workItem from="1719019581803" duration="11000" />
+      <workItem from="1719019636378" duration="22000" />
+      <workItem from="1719019696663" duration="23000" />
+      <workItem from="1719019974021" duration="235000" />
+      <workItem from="1719020247053" duration="860000" />
+      <workItem from="1719021887442" duration="328000" />
+      <workItem from="1719022374458" duration="441000" />
+      <workItem from="1719063982834" duration="662000" />
     </task>
     <task id="LOCAL-00001" summary="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
       <option name="closed" value="true" />
@@ -142,7 +161,39 @@
       <option name="project" value="LOCAL" />
       <updated>1718988314198</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add reset function to DatabaseSingleton&#10;&#10;This function drops then creates the database, and was added to fix the problem of changing table fields, which required a SQL query to update it. It was easier to just make a new table in the database.">
+      <option name="closed" value="true" />
+      <created>1719064203212</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719064203212</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Change videoFileName to videoFilePath in Post table&#10;&#10;This change was made to support frontend requisitions for video files, so now the backend project has a folder containing all the videos, and the Post class stores the name of the video associated with a given post.">
+      <option name="closed" value="true" />
+      <created>1719064425234</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1719064425234</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add routes for uploading posts and retrieving video files">
+      <option name="closed" value="true" />
+      <created>1719064469073</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1719064469073</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add post creation and visualization pages&#10;&#10;File post.tsx represents the visualization of a post (it makes a GET request to backend), while post-creation.tsx represents a form to upload a posts, taking a title, a description, and a video file as argument. User associated with a post to be added.">
+      <option name="closed" value="true" />
+      <created>1719064599956</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1719064599956</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,7 +213,11 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)" />
+    <MESSAGE value="Add reset function to DatabaseSingleton&#10;&#10;This function drops then creates the database, and was added to fix the problem of changing table fields, which required a SQL query to update it. It was easier to just make a new table in the database." />
+    <MESSAGE value="Change videoFileName to videoFilePath in Post table&#10;&#10;This change was made to support frontend requisitions for video files, so now the backend project has a folder containing all the videos, and the Post class stores the name of the video associated with a given post." />
+    <MESSAGE value="Add routes for uploading posts and retrieving video files" />
+    <MESSAGE value="Add post creation and visualization pages&#10;&#10;File post.tsx represents the visualization of a post (it makes a GET request to backend), while post-creation.tsx represents a form to upload a posts, taking a title, a description, and a video file as argument. User associated with a post to be added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add post creation and visualization pages&#10;&#10;File post.tsx represents the visualization of a post (it makes a GET request to backend), while post-creation.tsx represents a form to upload a posts, taking a title, a description, and a video file as argument. User associated with a post to be added." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
