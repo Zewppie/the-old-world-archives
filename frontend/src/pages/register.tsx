@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from '@mantine/form';
 import { TextInput, PasswordInput, Button, Box } from '@mantine/core';
 import axios from 'axios';
+import '../index.css';
 
 const Register = () => {
     // make form for user to provide input
@@ -39,24 +41,42 @@ const Register = () => {
     };
 
     return (
-        <Box sx={{ maxWidth: 300 }} mx="auto">
-            <form onSubmit={form.onSubmit(handleSubmit)}>
-                <TextInput
-                    label="Username"
-                    placeholder="Username"
-                    {...form.getInputProps('username')}
-                />
-                <PasswordInput
-                    label="Password"
-                    placeholder="Password"
-                    mt="sm"
-                    {...form.getInputProps('password')}
-                />
-                <Button type="submit" mt="sm" fullWidth>
-                    Register
-                </Button>
-            </form>
-        </Box>
+        <div className="container">
+            <div className="header" style={{ position: 'fixed', top: 0, left: 0, right: 0, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px', backgroundColor: 'black', color: 'white', zIndex: 1000 }}>
+                <Link to="/">
+                    <img src="the_old_world_archives_logo.png" alt="Logo" className="logo" style={{ marginRight: '20px' }} />
+                </Link>
+                <div>
+                    <Link to="/user/register">
+                        <Button variant="filled" color="indigo" style={{ marginRight: '10px' }}>Register</Button>
+                    </Link>
+                    <Link to="/posts">
+                        <Button variant="filled" color="indigo" style={{ marginRight: '10px' }}>Posts</Button>
+                    </Link>
+                    <Link to="/entities">
+                        <Button variant="filled" color="indigo">Entity Wiki</Button>
+                    </Link>
+                </div>
+            </div>
+            <Box>
+                <form onSubmit={form.onSubmit(handleSubmit)}>
+                    <TextInput
+                        label="Username"
+                        placeholder="Username"
+                        {...form.getInputProps('username')}
+                    />
+                    <PasswordInput
+                        label="Password"
+                        placeholder="Password"
+                        mt="sm"
+                        {...form.getInputProps('password')}
+                    />
+                    <Button type="submit" mt="sm" fullWidth>
+                        Register
+                    </Button>
+                </form>
+            </Box>
+        </div>
     );
 };
 
