@@ -19,7 +19,7 @@ data class PostRequest(val title: String, val description: String, val userName:
 fun Route.postRouting() {
     route("/posts") {
         get {
-            call.respond(FreeMarkerContent("index.ftl", mapOf("posts" to dao.allPosts())))
+            call.respond(mapOf("posts" to dao.allPosts()))
         }
         get("{id}") {
             val id = call.parameters["id"]?.toIntOrNull() ?: return@get call.respond(HttpStatusCode.BadRequest, "Missing id")
