@@ -82,9 +82,6 @@ const PostCreation: React.FC = () => {
                 />
             </div>
             <button type="submit">Submit</button>
-            <Link to="/">
-                <Button variant="filled" color="indigo">Return to Home Page</Button>
-            </Link>
         </form>
     );
 };
