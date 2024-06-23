@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@mantine/core';
 import '../index.css';
+import { useEffect } from 'react';
 
 function Entities() {
     const entities = [
@@ -13,6 +14,32 @@ function Entities() {
         { id: 7, name: 'Starfish', description: "It hangs off the ceiling and grabs players walking underneath with its claw/hand. Deals minor damage overtime, so the player has some time to escape or rescue stuck teammates. If a captured player does not escape, their corpse will hang indefinitely, and The Starfish is essentially disarmed.", image: '/entities/Starfish.png'}
     ];
 
+    useEffect(() => {
+        // pra permitir o scroll suave entre as entidades
+        const handleAnchorClick = (event) => {
+            if (event.target.tagName === 'A' && event.target.getAttribute('href').startsWith('#')) {
+                event.preventDefault();
+                const targetId = event.target.getAttribute('href').slice(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const headerOffset = 70;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        };
+
+        document.addEventListener('click', handleAnchorClick);
+        return () => {
+            document.removeEventListener('click', handleAnchorClick);
+        };
+    }, []);
+
     return (
         <div className="container">
             {/* Blank space to accommodate the fixed header */}
@@ -24,7 +51,7 @@ function Entities() {
                     <img src="the_old_world_archives_logo.png" alt="Logo" className="logo" style={{ marginRight: '20px' }} />
                 </Link>
                 <div>
-                    <Link to="/user/register">
+                    <Link to="/register">
                         <Button variant="filled" color="indigo" style={{ marginRight: '10px' }}>Register</Button>
                     </Link>
                     <Link to="/posts">

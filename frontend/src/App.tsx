@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route, useParams} from 'react-router-dom'
 import axios from  'axios'
+import ReactDOM from 'react-dom';
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 import { UserProvider } from './components/UserContext';
@@ -17,14 +18,16 @@ function App() {
     // o routes vai servir de hub pra mudar de páginas, a única coisa que eu preciso fazer no App.tsx é colocar as páginas
     return (
         <MantineProvider defaultColorScheme="dark">
-            <BrowserRouter> 
-                <Routes> 
-                    <Route index element={<Home />} />
-                    <Route path="posts" element={<Posts />} />
-                    <Route path="user/register" element={<Register />} />
-                    <Route path="entities" element={<Entities />} />
-                </Routes>
-            </BrowserRouter>
+            <UserProvider>
+                <BrowserRouter> 
+                    <Routes> 
+                        <Route index element={<Home />} />
+                        <Route path="posts" element={<Posts />} />
+                        <Route path="register" element={<Register />} />
+                        <Route path="entities" element={<Entities />} />
+                    </Routes>
+                </BrowserRouter>
+            </UserProvider>
         </MantineProvider>
     );
 };
