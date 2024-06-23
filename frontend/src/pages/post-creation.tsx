@@ -14,7 +14,7 @@ const PostCreation: React.FC = () => {
     // a user that is not logged-in needs to be redirected to login page
     useEffect(() => {
         if(!user) {
-            navigate('/user/login');
+            navigate('/login');
         }
     }, [user, navigate]);
 

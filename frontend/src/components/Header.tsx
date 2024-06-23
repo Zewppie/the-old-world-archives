@@ -17,6 +17,9 @@ const Header = ({ children }: HeaderProps) => {
                     <Link to="/login">
                         <Button variant="filled" color="indigo" style={{ marginRight: '10px' }}>Login/Register</Button>
                     </Link>
+                    <Link to="/upload">
+                        <Button variant="filled" color="indigo" style={{ marginRight: '10px' }}>Create Post</Button>
+                    </Link>
                     <Link to="/posts">
                         <Button variant="filled" color="indigo" style={{ marginRight: '10px' }}>Posts</Button>
                     </Link>

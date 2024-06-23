@@ -11,6 +11,7 @@ import Posts from './pages/posts'
 import Register from './pages/register'
 import Entities from './pages/entities';
 import Login from "./pages/login.tsx";
+import PostCreation from "./pages/post-creation.tsx";
 
 
 axios.defaults.baseURL = 'http://localhost:8080' // de onde a requisição vai ser feita
@@ -24,10 +25,11 @@ function App() {
                     <Layout>
                         <Routes>
                             <Route index element={<Home />} />
-                            <Route path="posts" element={<Posts />} />
-                            <Route path="register" element={<Register />} />
-                            <Route path="entities" element={<Entities />} />
-                            <Route path="login" element={<Login />} />
+                            <Route path="/posts" element={<Posts />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/entities" element={<Entities />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/upload" element={<PostCreation />} />
                         </Routes>
                     </Layout>
                 </BrowserRouter>
