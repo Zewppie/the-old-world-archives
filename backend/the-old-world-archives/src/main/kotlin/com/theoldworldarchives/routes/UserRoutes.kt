@@ -53,7 +53,7 @@ fun Route.userRouting() {
                 // sends authentication token back to frontend
                 //call.respond(mapOf("token" to token))
             } else {
-                call.respond(HttpStatusCode.Unauthorized, "Invalid user registration request")
+                call.respond(HttpStatusCode.Unauthorized, "Invalid user login request")
             }
         }
         // don't know if will be used
