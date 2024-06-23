@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Updates frontend dependencies and database&#10;&#10;Dependencies updated to handle authentication and user session">
+    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Add posts listing to posts.tsx&#10;&#10;Now the posts page (posts.tsx) contains a list of all posts in the database, and clicking on them leads to post page.">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/PostRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/PostRoutes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/posts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/posts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/ApplicationTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/DAOFacadeTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/DAOFacadeTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/test/kotlin/com/theoldworldarchives/PostRoutesTest.kt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +99,10 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/the-old-world-archives" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="com.theoldworldarchives.dao" />
     </key>
@@ -178,6 +185,7 @@
       <workItem from="1719098794825" duration="126000" />
       <workItem from="1719098993871" duration="125000" />
       <workItem from="1719099231639" duration="73000" />
+      <workItem from="1719146003757" duration="1824000" />
     </task>
     <task id="LOCAL-00001" summary="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
       <option name="closed" value="true" />
