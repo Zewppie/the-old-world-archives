@@ -5,6 +5,7 @@ import axios from 'axios';
 import { UserContext } from '../components/UserContext';
 import {useNavigate} from "react-router-dom";
 import { Link } from 'react-router-dom';
+import '../index.css';
 
 const Register = () => {
     // make form for user to provide input
@@ -46,12 +47,8 @@ const Register = () => {
         }
     };
 
-    const redirectToHome = () => {
-        navigate('/');
-    }
-
     return (
-        <Box sx={{ maxWidth: 300 }} mx="auto">
+        <Box>
             <form onSubmit={form.onSubmit(handleSubmit)}>
                 <TextInput
                     label="Username"
@@ -67,8 +64,8 @@ const Register = () => {
                 <Button type="submit" mt="sm" fullWidth>
                     Register
                 </Button>
-                <Link to="/">
-                    <Button variant="filled" color="indigo">Return to Home Page</Button>
+                <Link to="/login">
+                    <Button variant="filled" color="indigo">Login</Button>
                 </Link>
             </form>
         </Box>

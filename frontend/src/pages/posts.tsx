@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import {Button} from "@mantine/core";
+
 
 interface Post {
     id: number;
@@ -33,6 +33,8 @@ const Posts = () => {
 
     return (
         <div>
+            <h1>This is the post page!</h1>
+            {/* Add your content here */}
             <h2>Posts</h2>
             <ul>
                 {posts.map(post => (
@@ -43,9 +45,6 @@ const Posts = () => {
                     </li>
                 ))}
             </ul>
-            <Link to="/">
-                <Button variant="filled" color="indigo">Return to Home Page</Button>
-            </Link>
         </div>
     );
 };

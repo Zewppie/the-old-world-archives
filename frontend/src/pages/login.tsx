@@ -33,28 +33,28 @@ const Login: React.FC = () => {
     };
 
     const redirectToRegister = () => {
-        navigate('/user/register')
+        navigate('register')
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Username:</label>
-                <input type="text" value={name} onChange={(e) => setUsername(e.target.value)}/>
-            </div>
-            <div>
-                <label>Password:</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            </div>
-            <button type="submit">Login</button>
-            <Link to="/user/register">
-                <Button variant="filled" color="indigo">Register</Button>
-            </Link>
-            <Link to="/">
-                <Button variant="filled" color="indigo">Return to Home Page</Button>
-            </Link>
-        </form>
+        <div>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>Username:</label>
+                    <input type="text" value={name} onChange={(e) => setUsername(e.target.value)}/>
+                </div>
+                <div>
+                    <label>Password:</label>
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                </div>
+                <button type="submit">Login</button>
+                <Link to="/register">
+                    <Button variant="filled" color="indigo">Register</Button>
+                </Link>
+            </form>
+        </div>
     );
 };
+
 
 export default Login;
