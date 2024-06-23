@@ -7,6 +7,7 @@ import { UserProvider } from './components/UserContext';
 import Layout from './components/Layout';
 import Home from './pages/home'
 import Posts from './pages/posts'
+import Register from './pages/register'
 import Entities from './pages/entities';
 
 
@@ -20,6 +21,7 @@ function App() {
                 <Routes> 
                     <Route index element={<Home />} />
                     <Route path="posts" element={<Posts />} />
+                    <Route path="user/register" element={<Register />} />
                     <Route path="entities" element={<Entities />} />
                 </Routes>
             </BrowserRouter>
