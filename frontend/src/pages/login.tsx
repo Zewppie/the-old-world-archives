@@ -33,7 +33,7 @@ const Login: React.FC = () => {
     };
 
     const redirectToRegister = () => {
-        navigate('register')
+        navigate('/register')
     }
 
     return (
@@ -48,9 +48,9 @@ const Login: React.FC = () => {
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <button type="submit">Login</button>
-                <Link to="/register">
-                    <Button variant="filled" color="indigo">Register</Button>
-                </Link>
+                <div>
+                    <Button variant="filled" color="indigo" onClick={redirectToRegister}>Register</Button>
+                </div>
             </form>
         </div>
     );

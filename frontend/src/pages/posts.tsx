@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 
 interface Post {
@@ -13,6 +13,7 @@ interface Post {
 
 const Posts = () => {
     const [posts, setPosts] = useState<Post[]>([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -33,15 +34,12 @@ const Posts = () => {
 
     return (
         <div>
-            <h1>This is the post page!</h1>
+            <h1>Posts</h1>
             {/* Add your content here */}
-            <h2>Posts</h2>
             <ul>
                 {posts.map(post => (
-                    <li key={post.id}>
-                        <Link to={`/posts/${post.id}`}>
+                    <li key={post.id} onClick={() => navigate(`/posts/${post.id}`)} style={{cursor: 'pointer'}}>
                             {post.title}
-                        </Link>
                     </li>
                 ))}
             </ul>
