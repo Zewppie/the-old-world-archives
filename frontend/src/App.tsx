@@ -8,6 +8,7 @@ import { UserProvider } from './components/UserContext';
 import Layout from './components/Layout';
 import Home from './pages/home'
 import Posts from './pages/posts'
+import Post from './pages/post';
 import Register from './pages/register'
 import Entities from './pages/entities';
 import Login from "./pages/login.tsx";
@@ -30,6 +31,7 @@ function App() {
                             <Route path="/entities" element={<Entities />} />
                             <Route path="/login" element={<Login />} />
                             <Route path="/upload" element={<PostCreation />} />
+                            <Route path="posts/:postId" element={<PostWrapper />} />
                         </Routes>
                     </Layout>
                 </BrowserRouter>
@@ -43,11 +45,11 @@ const PostWrapper = () => {
     return <Post postId={parseInt(postId!)} />;
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
-);
+//const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+//root.render(
+//    <React.StrictMode>
+//        <App />
+//    </React.StrictMode>
+//);
 
 export default App
