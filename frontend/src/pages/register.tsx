@@ -64,6 +64,9 @@ const Register = () => {
                 <Button type="submit" mt="sm" fullWidth>
                     Register
                 </Button>
+                <Link to="/login">
+                    <Button variant="filled" color="indigo">Login</Button>
+                </Link>
             </form>
         </Box>
     );

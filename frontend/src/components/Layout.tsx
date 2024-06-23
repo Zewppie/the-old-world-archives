@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from "./Header.tsx";
 
 const Layout = ({ children }) => {
     const navigate = useNavigate();
@@ -11,7 +12,9 @@ const Layout = ({ children }) => {
 
     return (
         <div>
-            {children}
+            <Header>
+                {children}
+            </Header>
         </div>
     );
 };

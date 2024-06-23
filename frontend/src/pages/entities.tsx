@@ -51,8 +51,8 @@ function Entities() {
                     <img src="the_old_world_archives_logo.png" alt="Logo" className="logo" style={{ marginRight: '20px' }} />
                 </Link>
                 <div>
-                    <Link to="/register">
-                        <Button variant="filled" color="indigo" style={{ marginRight: '10px' }}>Register</Button>
+                    <Link to="/login">
+                        <Button variant="filled" color="indigo" style={{ marginRight: '10px' }}>Login/Register</Button>
                     </Link>
                     <Link to="/posts">
                         <Button variant="filled" color="indigo" style={{ marginRight: '10px' }}>Posts</Button>

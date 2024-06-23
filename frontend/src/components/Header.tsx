@@ -1,9 +1,12 @@
-import React from 'react';
-import { Button } from '@mantine/core';
+import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import '../index.css';
+import { Button } from '@mantine/core';
 
-function Posts() {
+interface HeaderProps {
+    children: ReactNode;
+}
+
+const Header = ({ children }: HeaderProps) => {
     return (
         <div className="container">
             <div className="header" style={{ position: 'fixed', top: 0, left: 0, right: 0, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px', backgroundColor: 'black', color: 'white', zIndex: 1000 }}>
@@ -22,12 +25,11 @@ function Posts() {
                     </Link>
                 </div>
             </div>
-            <div style={{ textAlign: 'center', paddingTop: '100px' }}>
-                <h1>This is the post page!</h1>
-                <Button variant="filled" color="indigo">Get a web post</Button>
+            <div>
+                {children}
             </div>
         </div>
     );
-}
+};
 
-export default Posts;
+export default Header;

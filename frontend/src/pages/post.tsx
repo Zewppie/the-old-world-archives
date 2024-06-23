@@ -51,14 +51,11 @@ const Post: React.FC<PostProps> = ({ postId }) => {
             <p>{post.description}</p>
             {videoUrl && (
                 <video controls>
-                    <source src={videoUrl} type="video/webm" />
+                    <source src={videoUrl} type="video/webm"/>
                     Your browser does not support the video tag.
                 </video>
             )}
             <p>by {post.userName}</p>
-            <Link to="/">
-                <Button variant="filled" color="indigo">Return to Home Page</Button>
-            </Link>
         </div>
     );
 };

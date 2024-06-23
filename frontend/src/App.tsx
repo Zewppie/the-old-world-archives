@@ -10,6 +10,7 @@ import Home from './pages/home'
 import Posts from './pages/posts'
 import Register from './pages/register'
 import Entities from './pages/entities';
+import Login from "./pages/login.tsx";
 
 
 axios.defaults.baseURL = 'http://localhost:8080' // de onde a requisição vai ser feita
@@ -19,19 +20,21 @@ function App() {
     return (
         <MantineProvider defaultColorScheme="dark">
             <UserProvider>
-                <BrowserRouter> 
-                    <Routes> 
-                        <Route index element={<Home />} />
-                        <Route path="posts" element={<Posts />} />
-                        <Route path="register" element={<Register />} />
-                        <Route path="entities" element={<Entities />} />
-                    </Routes>
+                <BrowserRouter>
+                    <Layout>
+                        <Routes>
+                            <Route index element={<Home />} />
+                            <Route path="posts" element={<Posts />} />
+                            <Route path="register" element={<Register />} />
+                            <Route path="entities" element={<Entities />} />
+                            <Route path="login" element={<Login />} />
+                        </Routes>
+                    </Layout>
                 </BrowserRouter>
             </UserProvider>
         </MantineProvider>
     );
 };
-
 
 const PostWrapper = () => {
     const { postId } = useParams<{ postId: string }>();
