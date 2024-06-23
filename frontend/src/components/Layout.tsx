@@ -5,11 +5,6 @@ import Header from "./Header.tsx";
 const Layout = ({ children }) => {
     const navigate = useNavigate();
 
-    // refreshing the page takes you to home page
-    useEffect(() => {
-        navigate('/');
-    }, [history]);
-
     return (
         <div>
             <Header>
