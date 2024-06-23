@@ -33,7 +33,7 @@ class DAOFacadeTest {
         runBlocking {
             dao.addNewUser("xivo_colzione", "passwd")
             dao.addNewUser("zewppie", "limbus_company")
-            dao.addNewPost("funny title", "/path/to/video", "funny description", "xivo_colzione")
+            dao.addNewPost("funny title", "content_warning_4d93e4cc.webm", "funny description", "xivo_colzione")
         }
     }
 
