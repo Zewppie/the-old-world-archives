@@ -6,7 +6,7 @@ interface DAOFacade {
     suspend fun allPosts(): List<Post>
     suspend fun post(id: Int): Post?
     suspend fun addNewPost(title: String, videoFileName: String, description: String, userName: String): Post?
-    suspend fun editPost(id: Int, title: String, videoFileName: String, description: String, userName: String): Boolean // may not be used
+    suspend fun editPost(id: Int, title: String, videoFileName: String, description: String, userName: String, likes: Int): Boolean // may not be used
     suspend fun deletePost(id: Int): Boolean
 
     suspend fun allUsers(): List<User>
