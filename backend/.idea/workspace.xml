@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Add Comment routes on backend">
+    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Add Comment listing on post page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DatabaseSingleton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DatabaseSingleton.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/models/Comment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/models/Comment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/CommentRoutes.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/PostRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/PostRoutes.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/post.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/posts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/posts.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +79,7 @@
     &quot;Kotlin.ApplicationKt.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;post-commentaries-backend&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;post-commentaries&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend&quot;,
@@ -205,6 +205,21 @@
       <workItem from="1719258956784" duration="753000" />
       <workItem from="1719259766180" duration="50000" />
       <workItem from="1719259949916" duration="266000" />
+      <workItem from="1719260273909" duration="144000" />
+      <workItem from="1719260892142" duration="212000" />
+      <workItem from="1719261283491" duration="49000" />
+      <workItem from="1719261800088" duration="1224000" />
+      <workItem from="1719266070205" duration="29000" />
+      <workItem from="1719266297919" duration="15000" />
+      <workItem from="1719266395324" duration="46000" />
+      <workItem from="1719266550490" duration="15000" />
+      <workItem from="1719266765421" duration="121000" />
+      <workItem from="1719266897919" duration="138000" />
+      <workItem from="1719267079643" duration="393000" />
+      <workItem from="1719267815050" duration="77000" />
+      <workItem from="1719268066138" duration="99000" />
+      <workItem from="1719268243383" duration="86000" />
+      <workItem from="1719268340855" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
       <option name="closed" value="true" />
@@ -270,7 +285,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719236459736</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Creates Comment table&#10;&#10;Man I totally forgot that.">
+      <option name="closed" value="true" />
+      <created>1719260386994</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1719260386994</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add Comment listing on post page">
+      <option name="closed" value="true" />
+      <created>1719260404655</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1719260404655</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +328,9 @@
     <MESSAGE value="Add Comment model and database table" />
     <MESSAGE value="Add Comment database functions&#10;&#10;Functions to add comment, retrieve all comments from a post and delete comment added." />
     <MESSAGE value="Add Comment routes on backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Comment routes on backend" />
+    <MESSAGE value="Creates Comment table&#10;&#10;Man I totally forgot that." />
+    <MESSAGE value="Add Comment listing on post page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Comment listing on post page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

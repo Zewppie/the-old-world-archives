@@ -1,28 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {Button} from "@mantine/core";
+import { useUser } from '../components/UserContext';  // Adjust the path as necessary
 
 interface PostProps {
     postId: number;
 }
 
+interface Comment {
+    id: number;
+    text: string;
+    userName: string;
+    postId: number;
+}
+
 const Post: React.FC<PostProps> = ({ postId }) => {
+    const { user } = useUser();
     const [post, setPost] = useState<any>(null);
-    const [comments, setComments] = useState<any[]>([]);
+    const [comments, setComments] = useState<Comment[]>([]);
     const [videoBlob, setVideoBlob] = useState<Blob | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [commentText, setCommentText] = useState('');
 
     useEffect(() => {
         const fetchPostAndComments = async () => {
             try {
-                // Fetch post and comments
+                // gets post information
                 const response = await axios.get(`/posts/${postId}`);
                 const { post, comments } = response.data;
                 setPost(post);
                 setComments(comments);
 
-                // Fetch the video file
+                // gets post's video
                 const videoResponse = await axios.get(`/posts/videos/${post.videoFileName}`, {
                     responseType: 'blob',
                 });
@@ -39,12 +48,36 @@ const Post: React.FC<PostProps> = ({ postId }) => {
         fetchPostAndComments();
     }, [postId]);
 
+    const handleCommentSubmit = async () => {
+        if (!user) {
+            alert('You must be logged in to comment');
+            return;
+        }
+
+        try {
+            // gets comments
+            const response = await axios.post(`/posts/${postId}/comments`, {
+                userName: user.name,
+                text: commentText,
+                postId: postId
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            setComments([...comments, response.data]);
+            setCommentText('');
+        } catch (error) {
+            console.error('Error submitting comment:', error);
+        }
+    };
+
     if (loading) {
-        return <div>Loading...</div>; // Loading state while fetching post
+        return <div>Loading...</div>;
     }
 
     if (error) {
-        return <div>Error: {error}</div>; // Display error message
+        return <div>Error: {error}</div>;
     }
 
     if (!post) {
@@ -60,7 +93,7 @@ const Post: React.FC<PostProps> = ({ postId }) => {
                 <p>{post.description}</p>
                 {videoUrl && (
                     <video controls>
-                        <source src={videoUrl} type="video/webm"/>
+                        <source src={videoUrl} type="video/webm" />
                         Your browser does not support the video tag.
                     </video>
                 )}
@@ -68,6 +101,20 @@ const Post: React.FC<PostProps> = ({ postId }) => {
             </div>
             <div style={{ flex: 1 }}>
                 <h3>Comments</h3>
+                {user && (
+                    <div>
+                        <textarea
+                            value={commentText}
+                            onChange={(e) => setCommentText(e.target.value)}
+                            placeholder="Write a comment..."
+                            rows={4}
+                            cols={50}
+                        />
+                        <br />
+                        <button onClick={handleCommentSubmit}>Submit Comment</button>
+                    </div>
+                )}
+                {!user && <p>You must be logged in to comment.</p>}
                 {comments.length === 0 ? (
                     <p>No comments yet.</p>
                 ) : (
@@ -75,7 +122,7 @@ const Post: React.FC<PostProps> = ({ postId }) => {
                         {comments.map(comment => (
                             <li key={comment.id}>
                                 <p>{comment.text}</p>
-                                <p><em>by {comment.userName}</em></p>
+                                <p><em>{comment.userName}</em></p>
                             </li>
                         ))}
                     </ul>

@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.*
 @Serializable
 data class Comment(val id: Int, val text: String, val userName: String, val postId: Int) {
     companion object {
-        private val idCounter: AtomicInteger = AtomicInteger()
+        private val idCounter = AtomicInteger()
 
         fun new(text: String, userName: String, postId: Int): Comment {
             return Comment(idCounter.getAndIncrement(), text, userName, postId)
