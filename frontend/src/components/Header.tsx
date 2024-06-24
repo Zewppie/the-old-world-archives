@@ -19,7 +19,7 @@ const Header = ({ children }: HeaderProps) => {
 
     return (
         <div className="container">
-            <div className="header" style={{ position: 'fixed', top: 0, left: 0, right: 0, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px', backgroundColor: 'black', color: 'white', zIndex: 1000 }}>
+            <div className="header" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'black', color: 'white' }}>
                 <div>
                     <img src="the_old_world_archives_logo.png" alt="Logo" className="logo" style={{ marginRight: '20px' }} onClick={() => navigate('/')}/>
                 </div>

@@ -42,10 +42,8 @@ function Entities() {
 
     return (
         <div>
-            {/* Blank space to accommodate the fixed header */}
-            <div style={{ height: '70px' }} />
             {/* padding top serve pra barra de cima não ocultar os conteudos */}
-            <div style={{ textAlign: 'center', paddingTop: '3000px' }}>
+            <div style={{ textAlign: 'center' }}>
                 {/* tabela de conteudos pra poder se guiar pela page */}
                 <h1>This is the entity wiki!</h1>
                 <div style={{ marginBottom: '40px' }}>
