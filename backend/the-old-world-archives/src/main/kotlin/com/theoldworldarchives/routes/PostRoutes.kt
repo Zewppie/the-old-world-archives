@@ -24,8 +24,9 @@ fun Route.postRouting() {
         get("{id}") {
             val id = call.parameters["id"]?.toIntOrNull() ?: return@get call.respond(HttpStatusCode.BadRequest, "Missing id")
             val post = dao.post(id) ?: return@get call.respond(HttpStatusCode.NotFound, "Post not found")
+            val postComments = dao.allCommentsFromPost(post.id)
             // lets frontend require the video file from the video filename
-            call.respond(HttpStatusCode.OK, post)
+            call.respond(HttpStatusCode.OK, mapOf("post" to post, "comments" to postComments))
         }
         get("videos/{filename}") { // handles frontend requisitions to get a video for a post
             val filename = call.parameters["filename"] ?: return@get call.respond(HttpStatusCode.BadRequest, "Missing filename")
