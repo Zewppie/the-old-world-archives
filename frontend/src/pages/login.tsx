@@ -37,7 +37,7 @@ const Login: React.FC = () => {
     }
 
     return (
-        <div>
+        <div style={{ padding: '10px' }}>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Username:</label>
