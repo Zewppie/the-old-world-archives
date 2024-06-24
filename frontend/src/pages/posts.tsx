@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {Link, useNavigate} from 'react-router-dom';
-
+import {Button} from "@mantine/core";
+import { useNavigate } from 'react-router-dom';
 
 interface Post {
     id: number;

@@ -14,4 +14,8 @@ interface DAOFacade {
     suspend fun addNewUser(name: String, password: String): User?
     suspend fun editUserPassword(name: String, newPassword: String): Boolean
     suspend fun deleteUser(name: String): Boolean
+
+    suspend fun addNewComment(text: String, userName: String, postId: Int): Comment?
+    suspend fun allCommentsFromPost(postId: Int): List<Comment>
+    suspend fun deleteComment(id: Int): Boolean
 }

@@ -1,6 +1,8 @@
 package com.theoldworldarchives.routes
 
 import com.theoldworldarchives.dao.*
+import com.theoldworldarchives.models.Comment
+import com.theoldworldarchives.models.Post
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.server.application.*
@@ -16,6 +18,12 @@ import java.util.*
 @Serializable
 data class PostRequest(val title: String, val description: String, val userName: String)
 
+@Serializable
+data class PostResponse(val post: Post, val comments: List<Comment>)
+
+@Serializable
+data class CommentRequest(val text: String, val userName: String, val postId: Int)
+
 fun Route.postRouting() {
     route("/posts") {
         get {
@@ -23,9 +31,16 @@ fun Route.postRouting() {
         }
         get("{id}") {
             val id = call.parameters["id"]?.toIntOrNull() ?: return@get call.respond(HttpStatusCode.BadRequest, "Missing id")
-            val post = dao.post(id) ?: return@get call.respond(HttpStatusCode.NotFound, "Post not found")
-            // lets frontend require the video file from the video filename
-            call.respond(HttpStatusCode.OK, post)
+            try {
+                val post = dao.post(id) ?: return@get call.respond(HttpStatusCode.NotFound, "Post not found")
+                val postComments = dao.allCommentsFromPost(post.id)
+                val response = PostResponse(post, postComments)
+                // lets frontend require the video file from the video filename
+                call.respond(HttpStatusCode.OK, response)
+            } catch (e: Exception) {
+                call.application.environment.log.error("Failed to get post and comments", e)
+                call.respond(HttpStatusCode.InternalServerError, "Failed to get post and comments")
+            }
         }
         get("videos/{filename}") { // handles frontend requisitions to get a video for a post
             val filename = call.parameters["filename"] ?: return@get call.respond(HttpStatusCode.BadRequest, "Missing filename")
@@ -85,6 +100,28 @@ fun Route.postRouting() {
                 }
             } else {
                 call.respond(HttpStatusCode.BadRequest, "Missing parameters")
+            }
+        }
+        delete("{id}/comments/{commentId}") { // post id will be relevant in the future
+            val id = call.parameters["commentId"]?.toIntOrNull() ?: return@delete call.respond(HttpStatusCode.BadRequest, "Invalid comment ID")
+            val deleted = dao.deleteComment(id)
+            if (deleted) {
+                call.respond(HttpStatusCode.OK, "Comment deleted")
+            } else {
+                call.respond(HttpStatusCode.NotFound, "Comment not found")
+            }
+        }
+        post("/{id}/comments") {
+            try {
+                val request = call.receive<CommentRequest>()
+                val comment = dao.addNewComment(request.text, request.userName, request.postId)
+                if (comment != null) {
+                    call.respond(HttpStatusCode.OK, comment)
+                } else {
+                    call.respond(HttpStatusCode.BadRequest, "Failed to add comment")
+                }
+            } catch (e: Exception) {
+                call.respond(HttpStatusCode.BadRequest, e.message ?: "Invalid add comment request")
             }
         }
         post("{id}") {

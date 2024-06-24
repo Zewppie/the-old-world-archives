@@ -14,6 +14,7 @@ object DatabaseSingleton {
         transaction(database) {
             SchemaUtils.create(Posts)
             SchemaUtils.create(Users)
+            SchemaUtils.create(Comments)
         }
     }
 
@@ -24,8 +25,10 @@ object DatabaseSingleton {
         transaction(database) {
             SchemaUtils.drop(Posts)
             SchemaUtils.drop(Users)
+            SchemaUtils.drop(Comments)
             SchemaUtils.create(Posts)
             SchemaUtils.create(Users)
+            SchemaUtils.create(Comments)
         }
     }
 
