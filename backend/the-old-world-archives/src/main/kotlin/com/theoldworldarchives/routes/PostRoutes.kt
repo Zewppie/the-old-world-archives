@@ -21,6 +21,9 @@ data class PostRequest(val title: String, val description: String, val userName:
 @Serializable
 data class PostResponse(val post: Post, val comments: List<Comment>)
 
+@Serializable
+data class CommentRequest(val text: String, val userName: String, val postId: Int)
+
 fun Route.postRouting() {
     route("/posts") {
         get {
@@ -97,6 +100,28 @@ fun Route.postRouting() {
                 }
             } else {
                 call.respond(HttpStatusCode.BadRequest, "Missing parameters")
+            }
+        }
+        delete("{id}/comments/{commentId}") { // post id will be relevant in the future
+            val id = call.parameters["commentId"]?.toIntOrNull() ?: return@delete call.respond(HttpStatusCode.BadRequest, "Invalid comment ID")
+            val deleted = dao.deleteComment(id)
+            if (deleted) {
+                call.respond(HttpStatusCode.OK, "Comment deleted")
+            } else {
+                call.respond(HttpStatusCode.NotFound, "Comment not found")
+            }
+        }
+        post("/{id}/comments") {
+            try {
+                val request = call.receive<CommentRequest>()
+                val comment = dao.addNewComment(request.text, request.userName, request.postId)
+                if (comment != null) {
+                    call.respond(HttpStatusCode.OK, comment)
+                } else {
+                    call.respond(HttpStatusCode.BadRequest, "Failed to add comment")
+                }
+            } catch (e: Exception) {
+                call.respond(HttpStatusCode.BadRequest, e.message ?: "Invalid add comment request")
             }
         }
         post("{id}") {
