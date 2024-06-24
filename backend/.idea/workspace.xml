@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Add Comment listing on post page">
+    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Add &quot;likes&quot; attribute to Post&#10;&#10;It keeps track of like count.">
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/Like.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/models/Comment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/models/Comment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/CommentRoutes.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/PostRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/PostRoutes.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/post.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,36 +65,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Gradle.Build the-old-world-archives.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DAOFacadeTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.DatabaseTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.PostRouteTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
-    &quot;Kotlin.ApplicationKt.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;post-commentaries&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/xivo/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Gradle.Build the-old-world-archives.executor": "Run",
+    "Gradle.DAOFacadeTest.executor": "Run",
+    "Gradle.DatabaseTest.executor": "Run",
+    "Gradle.PostRouteTest.executor": "Run",
+    "Gradle.Upgrade Gradle wrapper.executor": "Run",
+    "Kotlin.ApplicationKt.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "post-likes",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "ts.external.directory.path": "/home/xivo/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;/home/xivo/.gradle&quot;
+  "keyToStringList": {
+    "kotlin-gradle-user-dirs": [
+      "/home/xivo/.gradle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/the-old-world-archives" />
@@ -191,35 +189,7 @@
       <workItem from="1719158470925" duration="65000" />
       <workItem from="1719185197153" duration="104000" />
       <workItem from="1719186766421" duration="80000" />
-      <workItem from="1719188704999" duration="126000" />
-      <workItem from="1719188893429" duration="218000" />
-      <workItem from="1719232705818" duration="3317000" />
-      <workItem from="1719236045242" duration="428000" />
-      <workItem from="1719236711637" duration="469000" />
-      <workItem from="1719237238545" duration="778000" />
-      <workItem from="1719238045571" duration="78000" />
-      <workItem from="1719255895085" duration="1424000" />
-      <workItem from="1719257449376" duration="32000" />
-      <workItem from="1719257493902" duration="647000" />
-      <workItem from="1719258168213" duration="642000" />
-      <workItem from="1719258956784" duration="753000" />
-      <workItem from="1719259766180" duration="50000" />
-      <workItem from="1719259949916" duration="266000" />
-      <workItem from="1719260273909" duration="144000" />
-      <workItem from="1719260892142" duration="212000" />
-      <workItem from="1719261283491" duration="49000" />
-      <workItem from="1719261800088" duration="1224000" />
-      <workItem from="1719266070205" duration="29000" />
-      <workItem from="1719266297919" duration="15000" />
-      <workItem from="1719266395324" duration="46000" />
-      <workItem from="1719266550490" duration="15000" />
-      <workItem from="1719266765421" duration="121000" />
-      <workItem from="1719266897919" duration="138000" />
-      <workItem from="1719267079643" duration="393000" />
-      <workItem from="1719267815050" duration="77000" />
-      <workItem from="1719268066138" duration="99000" />
-      <workItem from="1719268243383" duration="86000" />
-      <workItem from="1719268340855" duration="10000" />
+      <workItem from="1719269521775" duration="2721000" />
     </task>
     <task id="LOCAL-00001" summary="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
       <option name="closed" value="true" />
@@ -261,47 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719064599956</updated>
     </task>
-    <task id="LOCAL-00006" summary="Add Comment model and database table">
+    <task id="LOCAL-00006" summary="Add &quot;likes&quot; attribute to Post&#10;&#10;It keeps track of like count.">
       <option name="closed" value="true" />
-      <created>1719233837367</created>
+      <created>1719272509644</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1719233837367</updated>
+      <updated>1719272509644</updated>
     </task>
-    <task id="LOCAL-00007" summary="Add Comment database functions&#10;&#10;Functions to add comment, retrieve all comments from a post and delete comment added.">
-      <option name="closed" value="true" />
-      <created>1719235072840</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1719235072840</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Add Comment routes on backend">
-      <option name="closed" value="true" />
-      <created>1719236459736</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1719236459736</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Creates Comment table&#10;&#10;Man I totally forgot that.">
-      <option name="closed" value="true" />
-      <created>1719260386994</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1719260386994</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Add Comment listing on post page">
-      <option name="closed" value="true" />
-      <created>1719260404655</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1719260404655</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,12 +263,8 @@
     <MESSAGE value="Change videoFileName to videoFilePath in Post table&#10;&#10;This change was made to support frontend requisitions for video files, so now the backend project has a folder containing all the videos, and the Post class stores the name of the video associated with a given post." />
     <MESSAGE value="Add routes for uploading posts and retrieving video files" />
     <MESSAGE value="Add post creation and visualization pages&#10;&#10;File post.tsx represents the visualization of a post (it makes a GET request to backend), while post-creation.tsx represents a form to upload a posts, taking a title, a description, and a video file as argument. User associated with a post to be added." />
-    <MESSAGE value="Add Comment model and database table" />
-    <MESSAGE value="Add Comment database functions&#10;&#10;Functions to add comment, retrieve all comments from a post and delete comment added." />
-    <MESSAGE value="Add Comment routes on backend" />
-    <MESSAGE value="Creates Comment table&#10;&#10;Man I totally forgot that." />
-    <MESSAGE value="Add Comment listing on post page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Comment listing on post page" />
+    <MESSAGE value="Add &quot;likes&quot; attribute to Post&#10;&#10;It keeps track of like count." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add &quot;likes&quot; attribute to Post&#10;&#10;It keeps track of like count." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
