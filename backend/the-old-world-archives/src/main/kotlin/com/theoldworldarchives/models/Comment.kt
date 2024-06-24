@@ -23,5 +23,5 @@ object Comments : Table() {
     val userName = varchar("user", 128).references(Users.name, onDelete = ReferenceOption.NO_ACTION)
     val postId = integer("postId").references(Posts.id, onDelete = ReferenceOption.NO_ACTION)
 
-    override val primaryKey = PrimaryKey(this.id)
+    override val primaryKey = PrimaryKey(this.id) // TODO: make primary key a combination of postId and id, to make each comment unique on a given post
 }

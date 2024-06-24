@@ -75,6 +75,7 @@ class DAOFacadeImpl : DAOFacade {
             it[Users.password] = password
         }
         insertStatement.resultedValues?.singleOrNull()?.let(::resultRowToUser)
+            ?: throw IllegalArgumentException("Failed to create user")
     }
 
     override suspend fun editUserPassword(name: String, newPassword: String): Boolean = dbQuery {
@@ -85,6 +86,34 @@ class DAOFacadeImpl : DAOFacade {
 
     override suspend fun deleteUser(name: String): Boolean = dbQuery {
         Users.deleteWhere { Users.name eq name } > 0
+    }
+
+    // Comment class
+    private fun resultRowToComment(row: ResultRow) = Comment (
+        id = row[Comments.id],
+        text = row[Comments.text],
+        userName = row[Comments.userName],
+        postId = row[Comments.postId],
+    )
+
+    override suspend fun addNewComment(text: String, userName: String, postId: Int): Comment? = dbQuery {
+        val insertStatement = Comments.insert {
+            it[Comments.text] = text
+            it[Comments.userName] = userName
+            it[Comments.postId] = postId
+        }
+        insertStatement.resultedValues?.singleOrNull()?.let(::resultRowToComment)
+            ?: throw IllegalArgumentException("Failed to create comment")
+    }
+
+    override suspend fun allCommentsFromPost(postId: Int): List<Comment> = dbQuery {
+        Comments
+            .select { Comments.postId eq postId }
+            .map(::resultRowToComment)
+    }
+
+    override suspend fun deleteComment(id: Int): Boolean = dbQuery {
+        Comments.deleteWhere { Comments.id eq id } > 0
     }
 }
 
