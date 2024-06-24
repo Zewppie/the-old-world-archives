@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Add Comment database functions&#10;&#10;Functions to add comment, retrieve all comments from a post and delete comment added.">
-      <change afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/CommentRoutes.kt" afterDir="false" />
+    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Add Comment routes on backend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DatabaseSingleton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DatabaseSingleton.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/PostRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/PostRoutes.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/post.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/posts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/posts.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +194,17 @@
       <workItem from="1719188704999" duration="126000" />
       <workItem from="1719188893429" duration="218000" />
       <workItem from="1719232705818" duration="3317000" />
-      <workItem from="1719236045242" duration="320000" />
+      <workItem from="1719236045242" duration="428000" />
+      <workItem from="1719236711637" duration="469000" />
+      <workItem from="1719237238545" duration="778000" />
+      <workItem from="1719238045571" duration="78000" />
+      <workItem from="1719255895085" duration="1424000" />
+      <workItem from="1719257449376" duration="32000" />
+      <workItem from="1719257493902" duration="647000" />
+      <workItem from="1719258168213" duration="642000" />
+      <workItem from="1719258956784" duration="753000" />
+      <workItem from="1719259766180" duration="50000" />
+      <workItem from="1719259949916" duration="266000" />
     </task>
     <task id="LOCAL-00001" summary="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
       <option name="closed" value="true" />
@@ -249,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719235072840</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add Comment routes on backend">
+      <option name="closed" value="true" />
+      <created>1719236459736</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1719236459736</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +296,8 @@
     <MESSAGE value="Add post creation and visualization pages&#10;&#10;File post.tsx represents the visualization of a post (it makes a GET request to backend), while post-creation.tsx represents a form to upload a posts, taking a title, a description, and a video file as argument. User associated with a post to be added." />
     <MESSAGE value="Add Comment model and database table" />
     <MESSAGE value="Add Comment database functions&#10;&#10;Functions to add comment, retrieve all comments from a post and delete comment added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Comment database functions&#10;&#10;Functions to add comment, retrieve all comments from a post and delete comment added." />
+    <MESSAGE value="Add Comment routes on backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Comment routes on backend" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

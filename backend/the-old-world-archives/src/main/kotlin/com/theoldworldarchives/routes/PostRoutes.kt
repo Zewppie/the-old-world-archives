@@ -1,6 +1,8 @@
 package com.theoldworldarchives.routes
 
 import com.theoldworldarchives.dao.*
+import com.theoldworldarchives.models.Comment
+import com.theoldworldarchives.models.Post
 import io.ktor.http.*
 import io.ktor.http.content.*
 import io.ktor.server.application.*
@@ -16,6 +18,9 @@ import java.util.*
 @Serializable
 data class PostRequest(val title: String, val description: String, val userName: String)
 
+@Serializable
+data class PostResponse(val post: Post, val comments: List<Comment>)
+
 fun Route.postRouting() {
     route("/posts") {
         get {
@@ -23,10 +28,16 @@ fun Route.postRouting() {
         }
         get("{id}") {
             val id = call.parameters["id"]?.toIntOrNull() ?: return@get call.respond(HttpStatusCode.BadRequest, "Missing id")
-            val post = dao.post(id) ?: return@get call.respond(HttpStatusCode.NotFound, "Post not found")
-            val postComments = dao.allCommentsFromPost(post.id)
-            // lets frontend require the video file from the video filename
-            call.respond(HttpStatusCode.OK, mapOf("post" to post, "comments" to postComments))
+            try {
+                val post = dao.post(id) ?: return@get call.respond(HttpStatusCode.NotFound, "Post not found")
+                val postComments = dao.allCommentsFromPost(post.id)
+                val response = PostResponse(post, postComments)
+                // lets frontend require the video file from the video filename
+                call.respond(HttpStatusCode.OK, response)
+            } catch (e: Exception) {
+                call.application.environment.log.error("Failed to get post and comments", e)
+                call.respond(HttpStatusCode.InternalServerError, "Failed to get post and comments")
+            }
         }
         get("videos/{filename}") { // handles frontend requisitions to get a video for a post
             val filename = call.parameters["filename"] ?: return@get call.respond(HttpStatusCode.BadRequest, "Missing filename")
