@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Add deletion button on post page&#10;&#10;Only the user who made the post can see the button and delete the post." />
+    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Fix bug on like button&#10;&#10;A non-logged user, upon pressing the like button, would be correctly redirected to login page, but his like would still be registered.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/post-creation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/post-creation.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +45,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
+        <entry key="$PROJECT_DIR$/.." value="like-hotfix" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -72,7 +76,7 @@
     &quot;Kotlin.ApplicationKt.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;post-deletion&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;post-submission-visual-enhancement&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend&quot;,
@@ -201,6 +205,9 @@
       <workItem from="1719312220894" duration="74000" />
       <workItem from="1719313903891" duration="775000" />
       <workItem from="1719314718083" duration="275000" />
+      <workItem from="1719316498843" duration="48000" />
+      <workItem from="1719316579002" duration="36000" />
+      <workItem from="1719316632368" duration="96000" />
     </task>
     <task id="LOCAL-00001" summary="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
       <option name="closed" value="true" />
