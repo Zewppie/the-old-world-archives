@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Add backend route for post deletion">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/models/Comment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/models/Comment.kt" afterDir="false" />
+    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Make Post deletion delete all comments before&#10;&#10;Foreign key in Comments table was preventing post deletion.">
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/post.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -204,7 +201,7 @@
       <workItem from="1719278128707" duration="797000" />
       <workItem from="1719279913285" duration="487000" />
       <workItem from="1719312220894" duration="74000" />
-      <workItem from="1719313903891" duration="506000" />
+      <workItem from="1719313903891" duration="775000" />
     </task>
     <task id="LOCAL-00001" summary="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
       <option name="closed" value="true" />
@@ -270,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719313475200</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Make Post deletion delete all comments before&#10;&#10;Foreign key in Comments table was preventing post deletion.">
+      <option name="closed" value="true" />
+      <created>1719314667170</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1719314667170</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +303,8 @@
     <MESSAGE value="Add Like routes on backend" />
     <MESSAGE value="Change login page layout to match register page" />
     <MESSAGE value="Add backend route for post deletion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add backend route for post deletion" />
+    <MESSAGE value="Make Post deletion delete all comments before&#10;&#10;Foreign key in Comments table was preventing post deletion." />
+    <option name="LAST_COMMIT_MESSAGE" value="Make Post deletion delete all comments before&#10;&#10;Foreign key in Comments table was preventing post deletion." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
