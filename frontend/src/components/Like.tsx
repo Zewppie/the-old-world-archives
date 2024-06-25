@@ -51,8 +51,9 @@ const Like: React.FC<LikeProps> = ({ postId, likeCount, setLikeCount}) => {
     const handleLikeUnlike = () => {
         if(!user) {
             navigate('/login');
+        } else {
+            liked ? handleUnlike() : handleLike();
         }
-        liked ? handleUnlike() : handleLike();
     }
 
     return (
