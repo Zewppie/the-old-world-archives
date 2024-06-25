@@ -58,6 +58,7 @@ fun Route.postRouting() {
             var description: String? = null
             var videoFile: File? = null
             var userName: String? = null
+            var likes: Int? = null
 
             multipart.forEachPart { part ->
                 when (part) {
@@ -66,6 +67,7 @@ fun Route.postRouting() {
                             "title" -> title = part.value
                             "description" -> description = part.value
                             "userName" -> userName = part.value
+                            "likes" -> likes = part.value.toInt()
                         }
                     }
                     is PartData.FileItem -> {
@@ -91,8 +93,9 @@ fun Route.postRouting() {
                 val auxDescription = description!!
                 val auxUserName = userName!!
                 val auxVideoFile = videoFile!!
+                val auxLikes = likes!!
 
-                val post = dao.addNewPost(auxTitle, auxVideoFile!!.name, auxDescription, auxUserName)
+                val post = dao.addNewPost(auxTitle, auxVideoFile!!.name, auxDescription, auxUserName, auxLikes)
                 if (post != null) {
                     call.respond(HttpStatusCode.OK, post)
                 } else {
