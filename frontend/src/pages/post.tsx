@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useUser } from '../components/UserContext';
-import Like from "../components/Like.tsx";  // Adjust the path as necessary
+import Like from "../components/Like.tsx";
+import { useNavigate } from 'react-router-dom';
 
 interface PostProps {
     postId: number;
@@ -23,6 +24,7 @@ const Post: React.FC<PostProps> = ({ postId }) => {
     const [error, setError] = useState<string | null>(null);
     const [commentText, setCommentText] = useState('');
     const [likeCount, setLikeCount] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPostAndComments = async () => {
@@ -75,6 +77,19 @@ const Post: React.FC<PostProps> = ({ postId }) => {
         }
     };
 
+    const handleDeletePost = async () => {
+        if (window.confirm('Are you sure you want to delete this post?')) {
+            try {
+                await axios.delete(`/posts/${postId}`);
+                alert('Post deleted successfully');
+                navigate('/posts')
+            } catch (error) {
+                console.error('Error deleting post:', error);
+                setError('Failed to delete post');
+            }
+        }
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -104,10 +119,13 @@ const Post: React.FC<PostProps> = ({ postId }) => {
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <Like postId={postId} likeCount={likeCount} setLikeCount={setLikeCount} />
                 </div>
+                {user && user.name === post.userName && (
+                    <button onClick={handleDeletePost}>Delete Post</button>
+                )}
             </div>
             <div style={{flex: 1}}>
-            <h3>Comments</h3>
-                {user && (
+                <h3>Comments</h3>
+                {user ? (
                     <div>
                         <textarea
                             value={commentText}
@@ -119,8 +137,9 @@ const Post: React.FC<PostProps> = ({ postId }) => {
                         <br />
                         <button onClick={handleCommentSubmit}>Submit Comment</button>
                     </div>
+                ) : (
+                    <p>You must be logged in to comment.</p>
                 )}
-                {!user && <p>You must be logged in to comment.</p>}
                 {comments.length === 0 ? (
                     <p>No comments yet.</p>
                 ) : (

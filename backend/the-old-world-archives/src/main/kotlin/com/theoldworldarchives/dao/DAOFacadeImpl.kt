@@ -52,6 +52,7 @@ class DAOFacadeImpl : DAOFacade {
     }
 
     override suspend fun deletePost(id: Int): Boolean = dbQuery {
+        Comments.deleteWhere { Comments.postId eq id }
         Posts.deleteWhere { Posts.id eq id } > 0
     }
 
