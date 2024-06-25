@@ -26,6 +26,7 @@ data class CommentRequest(val text: String, val userName: String, val postId: In
 
 fun Route.postRouting() {
     route("/posts") {
+        // POSTS
         get {
             call.respond(mapOf("posts" to dao.allPosts()))
         }
@@ -103,6 +104,20 @@ fun Route.postRouting() {
                 }
             } else {
                 call.respond(HttpStatusCode.BadRequest, "Missing parameters")
+            }
+        }
+        delete("{id}") {
+            val id = call.parameters["id"]?.toIntOrNull() ?: return@delete call.respond(HttpStatusCode.BadRequest, "Missing id")
+            try {
+                val postDeleted = dao.deletePost(id)
+
+                if (postDeleted) {
+                    call.respond(HttpStatusCode.OK, "Post successfully deleted")
+                } else {
+                    call.respond(HttpStatusCode.BadRequest, "Post could not be deleted")
+                }
+            } catch (e: Exception) {
+                call.respond(HttpStatusCode.BadRequest, "Invalid delete post request")
             }
         }
 

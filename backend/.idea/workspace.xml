@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Change PostRoutes.kt to handle likes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/build/db.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/PostRoutes.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/routes/PostRoutes.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +74,7 @@
     "Kotlin.ApplicationKt.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "login-page-visual-enhancement",
+    "git-widget-placeholder": "post-deletion",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend",
@@ -285,7 +284,8 @@
     <MESSAGE value="Add post creation and visualization pages&#10;&#10;File post.tsx represents the visualization of a post (it makes a GET request to backend), while post-creation.tsx represents a form to upload a posts, taking a title, a description, and a video file as argument. User associated with a post to be added." />
     <MESSAGE value="Add &quot;likes&quot; attribute to Post&#10;&#10;It keeps track of like count." />
     <MESSAGE value="Add Like routes on backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Like routes on backend" />
+    <MESSAGE value="Change login page layout to match register page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change login page layout to match register page" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
