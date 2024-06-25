@@ -2,7 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import axios from '../axiosConfig';
 import { UserContext } from '../components/UserContext';
-import {Button} from "@mantine/core";
+import { Button, Stack, TextInput, Textarea, FileInput } from "@mantine/core";
+import { IconUpload, IconSend } from '@tabler/icons-react';
 
 const PostCreation: React.FC = () => {
     const [title, setTitle] = useState<string>('');
@@ -18,10 +19,8 @@ const PostCreation: React.FC = () => {
         }
     }, [user, navigate]);
 
-    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files[0]) {
-            setVideoFile(event.target.files[0]);
-        }
+    const handleFileChange = (file: File | null) => {
+        setVideoFile(file);
     };
 
     const handleSubmit = async (event: React.FormEvent) => {
@@ -56,33 +55,36 @@ const PostCreation: React.FC = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label>Title:</label>
-                <input
-                    type="text"
+            <Stack spacing="md">
+                <TextInput
+                    label="Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     required
+                    placeholder="Enter title"
                 />
-            </div>
-            <div>
-                <label>Description:</label>
-                <textarea
+                <Textarea
+                    label="Description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     required
+                    placeholder="Write a description..."
+                    rows={4}
+                    autosize
                 />
-            </div>
-            <div>
-                <label>Video:</label>
-                <input
-                    type="file"
+                <FileInput
+                    label="Video"
+                    placeholder="Select a video file"
                     accept="video/webm"
+                    value={videoFile}
                     onChange={handleFileChange}
                     required
+                    icon={<IconUpload size={14} />}
                 />
-            </div>
-            <button type="submit">Submit</button>
+                <Button type="submit" leftIcon={<IconSend size={14} />}>
+                    Submit
+                </Button>
+            </Stack>
         </form>
     );
 };
