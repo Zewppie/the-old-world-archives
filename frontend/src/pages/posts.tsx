@@ -9,6 +9,7 @@ interface Post {
     videoFileName: string;
     description: string;
     userName: string;
+    likes: number;
 }
 
 const Posts = () => {
@@ -35,7 +36,6 @@ const Posts = () => {
     return (
         <div>
             <h1>Posts</h1>
-            {/* Add your content here */}
             <ul>
                 {posts.map(post => (
                     <li key={post.id} onClick={() => navigate(`/posts/${post.id}`)} style={{cursor: 'pointer'}}>

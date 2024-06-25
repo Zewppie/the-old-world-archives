@@ -18,16 +18,4 @@ fun Application.configureSerialization() {
     install(ContentNegotiation) {
         json()
     }
-    routing {
-        val newPost = Post(
-            1,
-            "Check out this funny video!!",
-            "/static/content_warning_4d93e4cc.webm",
-            "That's all folks, like and subscribe for more!",
-            "template_user"
-        )
-        get("/posts/samplepost") {
-                call.respond(FreeMarkerContent("show.ftl", mapOf("post" to newPost)))
-        }
-    }
 }

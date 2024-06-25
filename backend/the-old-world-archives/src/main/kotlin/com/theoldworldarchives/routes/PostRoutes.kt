@@ -58,6 +58,7 @@ fun Route.postRouting() {
             var description: String? = null
             var videoFile: File? = null
             var userName: String? = null
+            var likes: Int? = null
 
             multipart.forEachPart { part ->
                 when (part) {
@@ -66,6 +67,7 @@ fun Route.postRouting() {
                             "title" -> title = part.value
                             "description" -> description = part.value
                             "userName" -> userName = part.value
+                            "likes" -> likes = part.value.toInt()
                         }
                     }
                     is PartData.FileItem -> {
@@ -91,8 +93,9 @@ fun Route.postRouting() {
                 val auxDescription = description!!
                 val auxUserName = userName!!
                 val auxVideoFile = videoFile!!
+                val auxLikes = likes!!
 
-                val post = dao.addNewPost(auxTitle, auxVideoFile!!.name, auxDescription, auxUserName)
+                val post = dao.addNewPost(auxTitle, auxVideoFile!!.name, auxDescription, auxUserName, auxLikes)
                 if (post != null) {
                     call.respond(HttpStatusCode.OK, post)
                 } else {
@@ -102,6 +105,8 @@ fun Route.postRouting() {
                 call.respond(HttpStatusCode.BadRequest, "Missing parameters")
             }
         }
+
+        // COMMENTS
         delete("{id}/comments/{commentId}") { // post id will be relevant in the future
             val id = call.parameters["commentId"]?.toIntOrNull() ?: return@delete call.respond(HttpStatusCode.BadRequest, "Invalid comment ID")
             val deleted = dao.deleteComment(id)
@@ -124,22 +129,34 @@ fun Route.postRouting() {
                 call.respond(HttpStatusCode.BadRequest, e.message ?: "Invalid add comment request")
             }
         }
-        post("{id}") {
-            val id = call.parameters.getOrFail<Int>("id").toInt()
-            val formParameters = call.receiveParameters()
-            when (formParameters.getOrFail("_action")) {
-                "update" -> {
-                    val title = formParameters.getOrFail("title")
-                    val videoFilepath = formParameters.getOrFail("videoFilepath")
-                    val description = formParameters.getOrFail("description")
-                    val userName = formParameters.getOrFail("userName")
-                    dao.editPost(id, title, videoFilepath, description, userName)
-                    call.respondRedirect("/posts/$id")
+
+        // LIKES
+        post("{id}/likes") {
+            val id = call.parameters["id"]?.toIntOrNull() ?: return@post call.respond(HttpStatusCode.BadRequest, "Missing id")
+            try {
+                val post = dao.post(id) ?: return@post call.respond(HttpStatusCode.NotFound, "Post not found")
+                val updatedPost = dao.editPost(post.id, post.title, post.videoFileName, post.description, post.userName, post.likes+1)
+                if (updatedPost) {
+                    call.respond(HttpStatusCode.OK, post.likes+1)
+                } else {
+                    call.respond(HttpStatusCode.BadRequest, "Failed to update post likes")
                 }
-                "delete" -> {
-                    dao.deletePost(id)
-                    call.respondRedirect("/articles")
+            } catch (e: Exception) {
+                call.respond(HttpStatusCode.BadRequest, e.message ?: "Failed to like")
+            }
+        }
+        delete("{id}/likes") {
+            val id = call.parameters["id"]?.toIntOrNull() ?: return@delete call.respond(HttpStatusCode.BadRequest, "Missing id")
+            try {
+                val post = dao.post(id) ?: return@delete call.respond(HttpStatusCode.NotFound, "Post not found")
+                val updatedPost = dao.editPost(post.id, post.title, post.videoFileName, post.description, post.userName, post.likes-1)
+                if (updatedPost) {
+                    call.respond(HttpStatusCode.OK, post.likes-1)
+                } else {
+                    call.respond(HttpStatusCode.BadRequest, "Failed to update post likes")
                 }
+            } catch (e: Exception) {
+                call.respond(HttpStatusCode.BadRequest, e.message ?: "Failed to dislike")
             }
         }
     }

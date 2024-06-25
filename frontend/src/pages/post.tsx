@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useUser } from '../components/UserContext';  // Adjust the path as necessary
+import { useUser } from '../components/UserContext';
+import Like from "../components/Like.tsx";  // Adjust the path as necessary
 
 interface PostProps {
     postId: number;
@@ -21,6 +22,7 @@ const Post: React.FC<PostProps> = ({ postId }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [commentText, setCommentText] = useState('');
+    const [likeCount, setLikeCount] = useState(0);
 
     useEffect(() => {
         const fetchPostAndComments = async () => {
@@ -30,6 +32,7 @@ const Post: React.FC<PostProps> = ({ postId }) => {
                 const { post, comments } = response.data;
                 setPost(post);
                 setComments(comments);
+                setLikeCount(post.likes);
 
                 // gets post's video
                 const videoResponse = await axios.get(`/posts/videos/${post.videoFileName}`, {
@@ -88,19 +91,22 @@ const Post: React.FC<PostProps> = ({ postId }) => {
 
     return (
         <div style={{ display: 'flex' }}>
-            <div style={{ flex: 2, marginRight: '20px' }}>
+            <div style={{flex: 2, marginRight: '20px'}}>
                 <h2>{post.title}</h2>
-                <p>{post.description}</p>
                 {videoUrl && (
                     <video controls>
-                        <source src={videoUrl} type="video/webm" />
+                        <source src={videoUrl} type="video/webm"/>
                         Your browser does not support the video tag.
                     </video>
                 )}
+                <p>{post.description}</p>
                 <p>by {post.userName}</p>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Like postId={postId} likeCount={likeCount} setLikeCount={setLikeCount} />
+                </div>
             </div>
-            <div style={{ flex: 1 }}>
-                <h3>Comments</h3>
+            <div style={{flex: 1}}>
+            <h3>Comments</h3>
                 {user && (
                     <div>
                         <textarea

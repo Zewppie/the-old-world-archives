@@ -22,6 +22,11 @@ fun Application.configureCors() {
         // uncomment below for production (only hosts above for testing)
         //anyHost()
         allowCredentials = true
+        allowMethod(HttpMethod.Options)
+        allowMethod(HttpMethod.Get)
+        allowMethod(HttpMethod.Post)
+        allowMethod(HttpMethod.Put)
+        allowMethod(HttpMethod.Delete)
         // this allows for receiving headers of the following type
         allowHeader(HttpHeaders.ContentType)
         allowHeader(HttpHeaders.Authorization)

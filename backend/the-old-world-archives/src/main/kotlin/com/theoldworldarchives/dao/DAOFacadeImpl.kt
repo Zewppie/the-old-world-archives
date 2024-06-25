@@ -14,7 +14,8 @@ class DAOFacadeImpl : DAOFacade {
         title = row[Posts.title],
         videoFileName = row[Posts.videoFileName],
         description = row[Posts.description],
-        userName = row[Posts.userName]
+        userName = row[Posts.userName],
+        likes = row[Posts.likes],
     )
 
     override suspend fun allPosts(): List<Post> = dbQuery {
@@ -28,23 +29,25 @@ class DAOFacadeImpl : DAOFacade {
             .singleOrNull()
     }
 
-    override suspend fun addNewPost(title: String, videoFileName: String, description: String, userName: String): Post? = dbQuery {
+    override suspend fun addNewPost(title: String, videoFileName: String, description: String, userName: String, likes: Int): Post? = dbQuery {
         val insertStatement = Posts.insert {
             it[Posts.title] = title
             it[Posts.videoFileName] = videoFileName
             it[Posts.description] = description
             it[Posts.userName] = userName
+            it[Posts.likes] = 0
         }
         insertStatement.resultedValues?.singleOrNull()?.let(::resultRowToPost)
             ?: throw IllegalArgumentException("Failed to insert a new post")
     }
 
-    override suspend fun editPost(id: Int, title: String, videoFileName: String, description: String, userName: String): Boolean = dbQuery {
+    override suspend fun editPost(id: Int, title: String, videoFileName: String, description: String, userName: String, likes: Int): Boolean = dbQuery {
         Posts.update({ Posts.id eq id }) {
             it[Posts.title] = title
             it[Posts.videoFileName] = videoFileName
             it[Posts.description] = description
             it[Posts.userName] = userName
+            it[Posts.likes] = likes
         } > 0
     }
 
