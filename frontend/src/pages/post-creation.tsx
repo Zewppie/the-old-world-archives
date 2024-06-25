@@ -39,6 +39,7 @@ const PostCreation: React.FC = () => {
         if (user && user.name) {
             uploadData.append('userName', user.name);
         }
+        uploadData.append('likes', 0);
 
         try {
             const response = await axios.post('/posts/upload', uploadData, {
