@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from '../axiosConfig';
 import { UserContext } from '../components/UserContext';
 import { Link } from 'react-router-dom';
-import { Button } from '@mantine/core';
+import {Box, Button, PasswordInput, TextInput} from '@mantine/core';
+import { useForm } from '@mantine/form';
 
 const Login: React.FC = () => {
     const [name, setUsername] = useState('');
@@ -11,13 +12,24 @@ const Login: React.FC = () => {
     const navigate = useNavigate();
     const { setUser } = useContext(UserContext);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const form = useForm({
+        initialValues: {
+            username: '',
+            password: '',
+        },
+
+        validate: {
+            username: (value) => (value ? null : 'Username is required'),
+            password: (value) => (value.length >= 6 ? null : 'Password must be at least 6 characters'),
+        },
+    });
+
+    const handleSubmit = async (values: typeof form.values) => {
         try {
             // gets user info for user session
             const response = await axios.post('/user/login', {
-                name,
-                password
+                name: values.username,
+                password: values.password
             }, {
                 headers: {
                     'Content-Type': 'application/json'
@@ -37,22 +49,30 @@ const Login: React.FC = () => {
     }
 
     return (
-        <div style={{ padding: '10px' }}>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Username:</label>
-                    <input type="text" value={name} onChange={(e) => setUsername(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                </div>
-                <button type="submit">Login</button>
-                <div>
-                    <Button variant="filled" color="indigo" onClick={redirectToRegister}>Register</Button>
-                </div>
-            </form>
-        </div>
+        <Box>
+            <div style={{padding: '10px'}}>
+                <h1 align="center">Login</h1>
+                <form onSubmit={form.onSubmit(handleSubmit)}>
+                    <TextInput
+                        label="Username"
+                        placeholder="Username"
+                        {...form.getInputProps('username')}
+                    />
+                    <PasswordInput
+                        label="Password"
+                        placeholder="Password"
+                        mt="sm"
+                        {...form.getInputProps('password')}
+                    />
+                    <Button type="submit" mt="sm" fullWidth>
+                        Login
+                    </Button>
+                    <div>
+                        <Button variant="filled" mt="sm" fullWidth color="indigo" onClick={() => navigate('/register')}>Register</Button>
+                    </div>
+                </form>
+            </div>
+        </Box>
     );
 };
 
