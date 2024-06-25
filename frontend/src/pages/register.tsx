@@ -49,27 +49,30 @@ const Register = () => {
 
     return (
         <Box>
-            <form onSubmit={form.onSubmit(handleSubmit)}>
-                <TextInput
-                    label="Username"
-                    placeholder="Username"
-                    {...form.getInputProps('username')}
-                />
-                <PasswordInput
-                    label="Password"
-                    placeholder="Password"
-                    mt="sm"
-                    {...form.getInputProps('password')}
-                />
-                <Button type="submit" mt="sm" fullWidth>
-                    Register
-                </Button>
-                <div>
-                    <Button variant="filled" color="indigo" onClick={() => navigate('/login')}>Login</Button>
-                </div>
-            </form>
+            <div style={{padding: '10px'}}>
+                <h1 align="center">Register</h1>
+                <form onSubmit={form.onSubmit(handleSubmit)}>
+                    <TextInput
+                        label="Username"
+                        placeholder="Username"
+                        {...form.getInputProps('username')}
+                    />
+                    <PasswordInput
+                        label="Password"
+                        placeholder="Password"
+                        mt="sm"
+                        {...form.getInputProps('password')}
+                    />
+                    <Button type="submit" mt="sm" fullWidth>
+                        Register
+                    </Button>
+                    <div>
+                        <Button variant="filled" mt="sm" fullWidth color="indigo" onClick={() => navigate('/login')}>Login</Button>
+                    </div>
+                </form>
+            </div>
         </Box>
-    );
+);
 };
 
 export default Register;
