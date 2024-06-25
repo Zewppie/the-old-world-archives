@@ -5,7 +5,7 @@ import com.theoldworldarchives.models.*
 interface DAOFacade {
     suspend fun allPosts(): List<Post>
     suspend fun post(id: Int): Post?
-    suspend fun addNewPost(title: String, videoFileName: String, description: String, userName: String): Post?
+    suspend fun addNewPost(title: String, videoFileName: String, description: String, userName: String, likes: Int): Post?
     suspend fun editPost(id: Int, title: String, videoFileName: String, description: String, userName: String, likes: Int): Boolean // may not be used
     suspend fun deletePost(id: Int): Boolean
 

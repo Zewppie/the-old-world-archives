@@ -12,9 +12,9 @@ object DatabaseSingleton {
         val jdbcURL = "jdbc:h2:file:./build/db"
         val database = Database.connect(jdbcURL, driverClassName)
         transaction(database) {
+            SchemaUtils.create(Comments)
             SchemaUtils.create(Posts)
             SchemaUtils.create(Users)
-            SchemaUtils.create(Comments)
         }
     }
 
@@ -23,9 +23,9 @@ object DatabaseSingleton {
         val jdbcURL = "jdbc:h2:file:./build/db"
         val database = Database.connect(jdbcURL, driverClassName)
         transaction(database) {
+            SchemaUtils.drop(Comments)
             SchemaUtils.drop(Posts)
             SchemaUtils.drop(Users)
-            SchemaUtils.drop(Comments)
             SchemaUtils.create(Posts)
             SchemaUtils.create(Users)
             SchemaUtils.create(Comments)

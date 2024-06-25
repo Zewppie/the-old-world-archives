@@ -29,7 +29,7 @@ class DAOFacadeImpl : DAOFacade {
             .singleOrNull()
     }
 
-    override suspend fun addNewPost(title: String, videoFileName: String, description: String, userName: String): Post? = dbQuery {
+    override suspend fun addNewPost(title: String, videoFileName: String, description: String, userName: String, likes: Int): Post? = dbQuery {
         val insertStatement = Posts.insert {
             it[Posts.title] = title
             it[Posts.videoFileName] = videoFileName
