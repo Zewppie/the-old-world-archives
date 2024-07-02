@@ -15,6 +15,7 @@ object DatabaseSingleton {
             SchemaUtils.create(Comments)
             SchemaUtils.create(Posts)
             SchemaUtils.create(Users)
+            SchemaUtils.create(Liked)
         }
     }
 
@@ -24,10 +25,12 @@ object DatabaseSingleton {
         val database = Database.connect(jdbcURL, driverClassName)
         transaction(database) {
             SchemaUtils.drop(Comments)
+            SchemaUtils.drop(Liked)
             SchemaUtils.drop(Posts)
             SchemaUtils.drop(Users)
             SchemaUtils.create(Posts)
             SchemaUtils.create(Users)
+            SchemaUtils.create(Liked)
             SchemaUtils.create(Comments)
         }
     }
