@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Fix bug on like button&#10;&#10;A non-logged user, upon pressing the like button, would be correctly redirected to login page, but his like would still be registered.">
-      <change afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/models/LikedBy.kt" afterDir="false" />
+    <list default="true" id="7f127741-64b0-4f4b-b567-0325d481048f" name="Changes" comment="Create Like model and database table&#10;&#10;A many-to-many relation, the Like table stores the primary key of Users, and the primary key of Posts.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DAOFacade.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DAOFacade.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DAOFacadeImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DAOFacadeImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DatabaseSingleton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/dao/DatabaseSingleton.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/models/LikedBy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/the-old-world-archives/src/main/kotlin/com/theoldworldarchives/models/Like.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,36 +66,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Gradle.Build the-old-world-archives.executor": "Run",
-    "Gradle.DAOFacadeTest.executor": "Run",
-    "Gradle.DatabaseTest.executor": "Run",
-    "Gradle.PostRouteTest.executor": "Run",
-    "Gradle.Upgrade Gradle wrapper.executor": "Run",
-    "Kotlin.ApplicationKt.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "fix-likes",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "ts.external.directory.path": "/home/xivo/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.Build the-old-world-archives.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DAOFacadeTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.DatabaseTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.PostRouteTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.ApplicationKt.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;fix-likes&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/xivo/Documents/periodo-5/mac0350/the-old-world-archives/backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/xivo/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "kotlin-gradle-user-dirs": [
-      "/home/xivo/.gradle"
+  &quot;keyToStringList&quot;: {
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;/home/xivo/.gradle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/the-old-world-archives" />
@@ -206,6 +210,8 @@
       <workItem from="1719316498843" duration="48000" />
       <workItem from="1719316579002" duration="36000" />
       <workItem from="1719316632368" duration="96000" />
+      <workItem from="1719487629934" duration="716000" />
+      <workItem from="1719918160812" duration="1107000" />
     </task>
     <task id="LOCAL-00001" summary="Add user registration page&#10;&#10;Created simple user registration page where a username and a password are inserted, and if the username given is not already associated with another user, then that user is registered. Error handling still to be added (like printing a message when a user with that name already exists)">
       <option name="closed" value="true" />
@@ -287,7 +293,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719314921486</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Create Like model and database table&#10;&#10;A many-to-many relation, the Like table stores the primary key of Users, and the primary key of Posts.">
+      <option name="closed" value="true" />
+      <created>1719480866256</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1719480866256</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,7 +331,8 @@
     <MESSAGE value="Add backend route for post deletion" />
     <MESSAGE value="Make Post deletion delete all comments before&#10;&#10;Foreign key in Comments table was preventing post deletion." />
     <MESSAGE value="Add deletion button on post page&#10;&#10;Only the user who made the post can see the button and delete the post." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add deletion button on post page&#10;&#10;Only the user who made the post can see the button and delete the post." />
+    <MESSAGE value="Create Like model and database table&#10;&#10;A many-to-many relation, the Like table stores the primary key of Users, and the primary key of Posts." />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Like model and database table&#10;&#10;A many-to-many relation, the Like table stores the primary key of Users, and the primary key of Posts." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

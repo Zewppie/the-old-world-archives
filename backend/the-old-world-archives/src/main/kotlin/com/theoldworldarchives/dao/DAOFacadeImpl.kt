@@ -119,6 +119,45 @@ class DAOFacadeImpl : DAOFacade {
     override suspend fun deleteComment(id: Int): Boolean = dbQuery {
         Comments.deleteWhere { Comments.id eq id } > 0
     }
+
+    // Like class
+    private fun resultRowToLike(row: ResultRow) = Like (
+        userName = row[Comments.userName],
+        postId = row[Comments.postId],
+    )
+
+    override suspend fun addLike(userName: String, postId: Int): Boolean = dbQuery {
+        val insertStatement = Liked.insert {
+            it[Liked.userName] = userName
+            it[Liked.postId] = postId
+        }
+        insertStatement.resultedValues?.singleOrNull()?.let(::resultRowToLike)
+            ?: return@dbQuery false
+        return@dbQuery true
+    }
+
+    override suspend fun deleteLike(userName: String, postId: Int): Boolean = dbQuery {
+        Liked.deleteWhere {
+            (Liked.userName eq userName) and (Liked.postId eq postId)
+        } > 0
+    }
+
+    override suspend fun allUserLikes(postId: Int): List<User> = dbQuery {
+        Liked
+            .innerJoin(Users, { Liked.userName }, { Users.name })
+            .select { Liked.postId eq postId }
+            .map(::resultRowToUser)
+    }
+
+    override suspend fun allPostsLiked(userName: String): List<Post> = dbQuery {
+        val postsLiked = Liked
+            .select { Liked.userName eq userName}
+            .map { it[Liked.postId] }
+
+        Posts
+            .select { Posts.id inList postsLiked }
+            .map (::resultRowToPost)
+    }
 }
 
 val dao: DAOFacade = DAOFacadeImpl()

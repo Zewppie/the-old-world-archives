@@ -18,4 +18,9 @@ interface DAOFacade {
     suspend fun addNewComment(text: String, userName: String, postId: Int): Comment?
     suspend fun allCommentsFromPost(postId: Int): List<Comment>
     suspend fun deleteComment(id: Int): Boolean
+
+    suspend fun addLike(userName: String, postId: Int): Boolean
+    suspend fun deleteLike(userName: String, postId: Int): Boolean
+    suspend fun allUserLikes(postId: Int): List<User>
+    suspend fun allPostsLiked(userName: String): List<Post>
 }
