@@ -174,5 +174,17 @@ fun Route.postRouting() {
                 call.respond(HttpStatusCode.BadRequest, e.message ?: "Failed to dislike")
             }
         }
+        get("{id}/likes/{userName}") {
+            val postId = call.parameters["postId"]?.toIntOrNull()
+            val userName = call.parameters["userName"]
+
+            if (postId == null || userName == null) {
+                call.respond(HttpStatusCode.BadRequest, "Invalid parameters")
+                return@get
+            }
+
+            val isLiked = dao.userLikedPost(userName, postId)
+            call.respond(mapOf("isLiked" to isLiked))
+        }
     }
 }
