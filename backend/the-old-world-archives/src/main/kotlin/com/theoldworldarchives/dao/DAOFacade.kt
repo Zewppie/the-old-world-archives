@@ -23,4 +23,5 @@ interface DAOFacade {
     suspend fun deleteLike(userName: String, postId: Int): Boolean
     suspend fun allUserLikes(postId: Int): List<User>
     suspend fun allPostsLiked(userName: String): List<Post>
+    suspend fun userLikedPost(userName: String, postId: Int): Boolean
 }
