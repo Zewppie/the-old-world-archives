@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { IconHeart } from '@tabler/icons-react';
 import { Loader } from '@mantine/core';
@@ -11,7 +11,7 @@ interface LikeProps {
     setLikeCount: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Like: React.FC<LikeProps> = ({ postId, likeCount, setLikeCount}) => {
+const Like: React.FC<LikeProps> = ({ postId, likeCount, setLikeCount }) => {
     const { user } = useUser();
     const navigate = useNavigate();
     const [liked, setLiked] = useState(false);
@@ -23,10 +23,17 @@ const Like: React.FC<LikeProps> = ({ postId, likeCount, setLikeCount}) => {
         setIsFetching(true);
 
         try {
-            const response = await axios.post(`/posts/${postId}/likes`);
-            setLiked(true)
-            setLikeCount(prev => prev + 1)
+            console.log(`Liking post with user: ${user?.name}`);
+            const response = await axios.post(`/posts/${postId}/likes/${user?.name}`);
+            setLiked(true);
+            setLikeCount(response.data.likes);
         } catch (error) {
+            console.error("Error liking post:", error);
+            if(error.response) {
+                console.error("Response data:", error.response.data);
+                console.error("Response status:", error.response.status);
+                console.error("Response headers:", error.response.headers);
+            }
             setError("Failed to like post");
         } finally {
             setIsFetching(false);
@@ -38,23 +45,43 @@ const Like: React.FC<LikeProps> = ({ postId, likeCount, setLikeCount}) => {
         setIsFetching(true);
 
         try {
-            const response = await axios.delete(`/posts/${postId}/likes`);
-            setLiked(false)
-            setLikeCount(prev => prev - 1)
+            const response = await axios.delete(`/posts/${postId}/likes/${user?.name}`);
+            setLiked(false);
+            setLikeCount(response.data.likes);
         } catch (error) {
             setError("Failed to unlike post");
         } finally {
             setIsFetching(false);
         }
-    }
+    };
+
+    useEffect(() => {
+        const fetchLikeStatus = async () => {
+            setError(null);
+            setIsFetching(true);
+
+            if (user) {
+                try {
+                    const response = await axios.get(`/posts/${postId}/likes/${user.name}`);
+                    setLiked(response.data.isLiked);
+                } catch (error) {
+                    console.error('Error fetching like status:', error);
+                } finally {
+                    setIsFetching(false);
+                }
+            }
+        };
+
+        fetchLikeStatus();
+    }, [postId, user]);
 
     const handleLikeUnlike = () => {
-        if(!user) {
+        if (!user) {
             navigate('/login');
         } else {
             liked ? handleUnlike() : handleLike();
         }
-    }
+    };
 
     return (
         <div>
@@ -63,14 +90,13 @@ const Like: React.FC<LikeProps> = ({ postId, likeCount, setLikeCount}) => {
                 className={`likeBtn ${liked ? "liked" : ""}`}
                 disabled={isFetching}
             >
-                {isFetching ? <Loader size="xs"/> : <IconHeart size={16}/>}
+                {isFetching ? <Loader size="xs" /> : <IconHeart size={16} />}
                 {liked ? "Liked" : "Like"}
             </button>
             {error && <div className="error">{error}</div>}
-            <span style={{marginLeft: '8px'}}>{likeCount}</span>
+            <span style={{ marginLeft: '8px' }}>{likeCount}</span>
         </div>
     );
 };
 
 export default Like;
-
