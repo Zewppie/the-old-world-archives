@@ -146,13 +146,18 @@ fun Route.postRouting() {
         }
 
         // LIKES
-        post("{id}/likes") {
+        post("{id}/likes/{userName}") {
             val id = call.parameters["id"]?.toIntOrNull() ?: return@post call.respond(HttpStatusCode.BadRequest, "Missing id")
+            val userName = call.parameters["userName"] ?: return@post call.respond(HttpStatusCode.BadRequest, "Missing userName")
             try {
+                val likeAdded = dao.addLike(userName, id)
+                if (!likeAdded) {
+                    return@post call.respond(HttpStatusCode.BadRequest, "Failed to add like")
+                }
                 val post = dao.post(id) ?: return@post call.respond(HttpStatusCode.NotFound, "Post not found")
-                val updatedPost = dao.editPost(post.id, post.title, post.videoFileName, post.description, post.userName, post.likes+1)
+                val updatedPost = dao.editPost(post.id, post.title, post.videoFileName, post.description, post.userName, post.likes + 1)
                 if (updatedPost) {
-                    call.respond(HttpStatusCode.OK, post.likes+1)
+                    call.respond(HttpStatusCode.OK, mapOf("likes" to post.likes + 1))
                 } else {
                     call.respond(HttpStatusCode.BadRequest, "Failed to update post likes")
                 }
@@ -160,13 +165,18 @@ fun Route.postRouting() {
                 call.respond(HttpStatusCode.BadRequest, e.message ?: "Failed to like")
             }
         }
-        delete("{id}/likes") {
+        delete("{id}/likes/{userName}") {
             val id = call.parameters["id"]?.toIntOrNull() ?: return@delete call.respond(HttpStatusCode.BadRequest, "Missing id")
+            val userName = call.parameters["userName"] ?: return@delete call.respond(HttpStatusCode.BadRequest, "Missing userName")
             try {
+                val likeDeleted = dao.deleteLike(userName, id)
+                if (!likeDeleted) {
+                    return@delete call.respond(HttpStatusCode.BadRequest, "Failed to delete like")
+                }
                 val post = dao.post(id) ?: return@delete call.respond(HttpStatusCode.NotFound, "Post not found")
-                val updatedPost = dao.editPost(post.id, post.title, post.videoFileName, post.description, post.userName, post.likes-1)
+                val updatedPost = dao.editPost(post.id, post.title, post.videoFileName, post.description, post.userName, post.likes - 1)
                 if (updatedPost) {
-                    call.respond(HttpStatusCode.OK, post.likes-1)
+                    call.respond(HttpStatusCode.OK, mapOf("likes" to post.likes - 1))
                 } else {
                     call.respond(HttpStatusCode.BadRequest, "Failed to update post likes")
                 }
@@ -175,7 +185,7 @@ fun Route.postRouting() {
             }
         }
         get("{id}/likes/{userName}") {
-            val postId = call.parameters["postId"]?.toIntOrNull()
+            val postId = call.parameters["id"]?.toIntOrNull()
             val userName = call.parameters["userName"]
 
             if (postId == null || userName == null) {
