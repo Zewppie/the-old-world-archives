@@ -67,7 +67,7 @@ const Register = () => {
                         Register
                     </Button>
                     <div>
-                        <Button variant="filled" mt="sm" fullWidth color="indigo" onClick={() => navigate('/login')}>Login</Button>
+                        <Button variant="filled" mt="sm" fullWidth color="violet" onClick={() => navigate('/login')}>Login</Button>
                     </div>
                 </form>
             </div>

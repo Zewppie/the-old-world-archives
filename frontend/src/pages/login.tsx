@@ -64,11 +64,11 @@ const Login: React.FC = () => {
                         mt="sm"
                         {...form.getInputProps('password')}
                     />
-                    <Button type="submit" mt="sm" fullWidth>
+                    <Button type="submit" mt="sm" fullWidth color="violet">
                         Login
                     </Button>
                     <div>
-                        <Button variant="filled" mt="sm" fullWidth color="indigo" onClick={() => navigate('/register')}>Register</Button>
+                        <Button variant="filled" mt="sm" fullWidth color="violet" onClick={() => navigate('/register')}>Register</Button>
                     </div>
                 </form>
             </div>

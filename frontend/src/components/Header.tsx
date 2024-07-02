@@ -27,14 +27,14 @@ const Header = ({ children }: HeaderProps) => {
                     {user ? (
                         <>
                             <span style={{ color: 'white', marginRight: '10px' }}>{user.name}</span>
-                            <Button variant="filled" color="indigo" style={{ marginRight: '10px' }} onClick={handleLogout}>Logout</Button>
+                            <Button variant="filled" color="violet" style={{ marginRight: '10px' }} onClick={handleLogout}>Logout</Button>
                         </>
                     ) : (
-                        <Button variant="filled" color="indigo" style={{ marginRight: '10px' }} onClick={() => navigate('/login')}>Login/Register</Button>
+                        <Button variant="filled" color="violet" style={{ marginRight: '10px' }} onClick={() => navigate('/login')}>Login/Register</Button>
                     )}
-                    <Button variant="filled" color="indigo" style={{ marginRight: '10px' }} onClick={() => navigate('/upload')}>Create Post</Button>
-                    <Button variant="filled" color="indigo" style={{ marginRight: '10px' }} onClick={() => navigate('/posts')}>Posts</Button>
-                    <Button variant="filled" color="indigo" onClick={() => navigate('/entities')}>Entity Wiki</Button>
+                    <Button variant="filled" color="violet" style={{ marginRight: '10px' }} onClick={() => navigate('/upload')}>Create Post</Button>
+                    <Button variant="filled" color="violet" style={{ marginRight: '10px' }} onClick={() => navigate('/posts')}>Posts</Button>
+                    <Button variant="filled" color="violet" onClick={() => navigate('/entities')}>Entity Wiki</Button>
                 </div>
             </div>
             <div>

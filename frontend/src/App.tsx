@@ -13,6 +13,7 @@ import Register from './pages/register'
 import Entities from './pages/entities';
 import Login from "./pages/login.tsx";
 import PostCreation from "./pages/post-creation.tsx";
+import './index.css'
 
 
 axios.defaults.baseURL = 'http://localhost:8080' // de onde a requisição vai ser feita
