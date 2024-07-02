@@ -158,6 +158,11 @@ class DAOFacadeImpl : DAOFacade {
             .select { Posts.id inList postsLiked }
             .map (::resultRowToPost)
     }
+
+    override suspend fun userLikedPost(userName: String, postId: Int): Boolean = dbQuery {
+        Liked.select { (Liked.userName eq userName) and (Liked.postId eq postId) }
+            .count() > 0
+    }
 }
 
 val dao: DAOFacade = DAOFacadeImpl()
