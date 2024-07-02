@@ -122,8 +122,8 @@ class DAOFacadeImpl : DAOFacade {
 
     // Like class
     private fun resultRowToLike(row: ResultRow) = Like (
-        userName = row[Comments.userName],
-        postId = row[Comments.postId],
+        userName = row[Liked.userName],
+        postId = row[Liked.postId],
     )
 
     override suspend fun addLike(userName: String, postId: Int): Boolean = dbQuery {
